@@ -61,7 +61,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "IntegrationArchitecturesWS20202021Angular:build"
+            "browserTarget": "IntegrationArchitecturesWS20202021Angular:build",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {
