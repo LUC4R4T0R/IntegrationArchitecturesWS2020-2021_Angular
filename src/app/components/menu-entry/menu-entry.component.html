@@ -1,0 +1,8 @@
+<ng-container *ngIf="this.entry">
+  <ng-container *ngIf="this.entry.path !== undefined; else textBlock">
+    <a routerLink="{{ this.entry.path }}" routerLinkActive="active">{{ this.entry.title }}</a>
+  </ng-container>
+  <ng-template #textBlock>
+    <a>{{ this.entry.title }}</a>
+  </ng-template>
+</ng-container>

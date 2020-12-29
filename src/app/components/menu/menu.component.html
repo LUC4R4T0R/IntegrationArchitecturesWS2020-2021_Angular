@@ -1,0 +1,5 @@
+<nav>
+  <app-menu-entry *ngFor="let entry of this.entries" [entry]="entry" ></app-menu-entry>
+  <app-menu-entry [entry]="{title: 'Luca'}" class="right" ></app-menu-entry>
+  <app-menu-entry [entry]="{title: 'Logout'}" class="right" ></app-menu-entry>
+</nav>
