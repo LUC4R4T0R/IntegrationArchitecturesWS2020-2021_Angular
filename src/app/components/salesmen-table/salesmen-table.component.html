@@ -1,0 +1,13 @@
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr app-salesmen-table-entry *ngFor="let salesman of salesmen" [salesman]="salesman"></tr>
+  </tbody>
+</table>
+

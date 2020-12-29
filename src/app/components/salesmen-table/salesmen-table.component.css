@@ -1,0 +1,26 @@
+table {
+  width: 100%;
+  font-size: 20px;
+  border-collapse: collapse;
+}
+
+table th{
+  padding: 8px 10px;
+}
+
+table>thead>tr{
+  color: white;
+  background: var(--primary-gradient);
+}
+
+table>thead>tr>th{
+  text-align: start;
+}
+
+tbody>tr:not(:last-child){
+  border-bottom: 1px solid lightgrey;
+}
+
+tr:nth-child(even){
+  background: #ececec;
+}

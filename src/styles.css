@@ -1,9 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 :root{
-  --primary-gradient: linear-gradient(330deg, rgb(245, 102, 90) 0%, rgb(196, 9, 9) 100%);
-  --primary: #e54b4b;
+  --primary-gradient: linear-gradient( 109.6deg,  rgba(48,207,208,1) 11.2%, rgba(51,8,103,1) 92.5% );
+  --primary: rgba(48,207,208,1);
+  --secondary: rgba(51,8,103,1);
 }
 
 body{
   margin: 0;
+  font-family: Arial;
 }

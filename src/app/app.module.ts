@@ -10,6 +10,8 @@ import { MenuComponent } from './components/menu/menu.component';
 import { MenuEntryComponent } from './components/menu-entry/menu-entry.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SettingsComponent } from './components/settings/settings.component';
+import { SalesmenTableComponent } from './components/salesmen-table/salesmen-table.component';
+import { SalesmenTableEntryComponent } from './components/salesmen-table-entry/salesmen-table-entry.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { SettingsComponent } from './components/settings/settings.component';
     OverviewComponent,
     MenuComponent,
     MenuEntryComponent,
-    SettingsComponent
+    SettingsComponent,
+    SalesmenTableComponent,
+    SalesmenTableEntryComponent
   ],
   imports: [
     BrowserModule,
