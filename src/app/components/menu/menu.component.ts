@@ -12,7 +12,8 @@ export class MenuComponent implements OnInit {
   entries:MenuEntry[] = [
     new MenuEntry('ia2020', '../overview'),
     new MenuEntry('Overview', '../overview'),
-    new MenuEntry('Settings', '../settings')
+    new MenuEntry('Settings', '../settings'),
+    new MenuEntry('Swagger', undefined, 'http://localhost:8080/api/swagger-api'),
   ];
 
   constructor(private auth:AuthService, private router:Router) { }

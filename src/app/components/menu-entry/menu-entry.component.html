@@ -3,6 +3,6 @@
     <a routerLink="{{ this.entry.path }}" routerLinkActive="active">{{ this.entry.title }}</a>
   </ng-container>
   <ng-template #textBlock>
-    <a>{{ this.entry.title }}</a>
+    <a [attr.href]="this.entry.href ? this.entry.href : null" [attr.target]="this.entry.href ? 'blank' : null" >{{ this.entry.title }}</a>
   </ng-template>
 </ng-container>
