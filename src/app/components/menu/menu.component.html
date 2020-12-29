@@ -1,5 +1,6 @@
 <nav>
   <app-menu-entry *ngFor="let entry of this.entries" [entry]="entry" ></app-menu-entry>
-  <app-menu-entry [entry]="{title: displayName}" class="right" ></app-menu-entry>
-  <app-menu-entry [entry]="{title: 'Logout'}" (click)="onLogout()" class="logout right" ></app-menu-entry>
+  <div class="spacer"></div>
+  <app-menu-entry [entry]="{title: displayName}" ></app-menu-entry>
+  <app-menu-entry [entry]="{title: 'Logout'}" (click)="onLogout()" class="logout" ></app-menu-entry>
 </nav>

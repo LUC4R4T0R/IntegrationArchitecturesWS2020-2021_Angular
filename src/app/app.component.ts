@@ -9,18 +9,10 @@ import { AuthService } from "./services/auth.service";
 })
 export class AppComponent {
   title = 'IntegrationArchitecturesWS20202021Angular';
-  loginState = false;
 
-  constructor(private auth:AuthService) {
+  constructor(public auth:AuthService) {
   }
 
   ngOnInit(){
-    this.loadLoginState();
-  }
-
-  loadLoginState(){
-    this.auth.isLoggedIn().subscribe(result => {
-      this.loginState = result;
-    });
   }
 }

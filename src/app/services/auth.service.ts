@@ -10,6 +10,7 @@ import { User } from "../models/user";
 })
 export class AuthService {
   loginPath:string = '/api/auth';
+  loginState: boolean = false;
 
   constructor(private http:HttpClient) { }
 
@@ -17,15 +18,18 @@ export class AuthService {
     return this.http.post(this.loginPath, credentials, {responseType: 'text'});
   }
 
-  logout(){
-    this.http.delete(this.loginPath);
+  logout():Observable<any>{
+    console.log('logging out');
+    return this.http.delete(this.loginPath);
   }
 
   isLoggedIn():Observable<boolean>{
     return this.http.get(this.loginPath).pipe(map(res => {
       if(res !== true){
+        this.loginState = false;
         return false;
       }else{
+        this.loginState = true;
         return true;
       }
     }));

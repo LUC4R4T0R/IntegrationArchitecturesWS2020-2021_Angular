@@ -1,0 +1,41 @@
+#main{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--primary-gradient);
+}
+#main>form{
+  background: white;
+  padding: 14px 20px;
+  border-radius: 6px;
+}
+
+#main>form>input{
+  font-family: Arial;
+  box-sizing: border-box;
+  display: block;
+  min-width: 300px;
+  font-size: 20px;
+  margin: 8px 0;
+  padding: 6px;
+}
+#main>form>input[type=text],#main>form>input[type=password]{
+  border-radius: 3px;
+  border: 1px solid grey;
+}
+
+#main>form>input[type=submit]{
+  border-radius: 3px;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  background: white;
+  cursor: pointer;
+}
+
+#main>form>input[type=submit]:hover{
+  color: white;
+  background: var(--primary-gradient);
+}
+

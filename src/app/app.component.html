@@ -1,2 +1,6 @@
-<router-outlet></router-outlet>
+<ng-container>
+  <app-menu *ngIf="this.auth.loginState"></app-menu>
+  <router-outlet></router-outlet>
+</ng-container>
+
 

@@ -17,4 +17,12 @@ app-menu-entry.right{
   align-self: end;
 }
 
+.spacer{
+  flex-grow: 1;
+}
+
+.logout{
+  cursor: pointer;
+}
+
 

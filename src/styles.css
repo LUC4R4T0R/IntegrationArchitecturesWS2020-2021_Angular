@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 :root{
   --primary-gradient: linear-gradient(330deg, rgb(245, 102, 90) 0%, rgb(196, 9, 9) 100%);
+  --primary: #e54b4b;
 }
 
 body{

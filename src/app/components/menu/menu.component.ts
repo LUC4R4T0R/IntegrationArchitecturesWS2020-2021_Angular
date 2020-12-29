@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
 import { MenuEntry } from "../../models/menu-entry";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-menu',
@@ -14,7 +15,7 @@ export class MenuComponent implements OnInit {
     new MenuEntry('Settings', '../settings')
   ];
 
-  constructor(private auth:AuthService) { }
+  constructor(private auth:AuthService, private router:Router) { }
 
   displayName:string;
 
@@ -23,8 +24,11 @@ export class MenuComponent implements OnInit {
   }
 
   onLogout(){
-    console.log('logging out');
-    this.auth.logout();
+    this.auth.logout().subscribe(() => {
+      this.auth.isLoggedIn().subscribe(() =>{
+        this.router.navigate(['']);
+      });
+    });
   }
 
   loadDisplayname(){
