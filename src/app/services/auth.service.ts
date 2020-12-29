@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Credentials } from "../models/credentials";
 import { Observable } from "rxjs";
-import {map} from "rxjs/operators";
+import { map } from "rxjs/operators";
+import { User } from "../models/user";
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,7 @@ export class AuthService {
     }));
   }
 
-  getUserInfo(){
-
+  getUserInfo():Observable<User>{
+    return this.http.get<User>('/api/user/-1');
   }
 }

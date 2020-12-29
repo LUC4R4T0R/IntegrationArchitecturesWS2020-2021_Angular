@@ -16,14 +16,20 @@ export class MenuComponent implements OnInit {
 
   constructor(private auth:AuthService) { }
 
+  displayName:string;
+
   ngOnInit(): void {
+    this.loadDisplayname();
   }
 
   onLogout(){
+    console.log('logging out');
     this.auth.logout();
   }
 
   loadDisplayname(){
-    this.auth.getUserInfo();
+    this.auth.getUserInfo().subscribe(user =>{
+      this.displayName = user.displayname;
+    });
   }
 }
