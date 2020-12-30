@@ -7,7 +7,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr app-salesmen-table-entry *ngFor="let salesman of salesmen" [salesman]="salesman"></tr>
+    <tr app-salesmen-table-entry *ngFor="let salesman of salesmen" [salesman]="salesman" [attr.class]="selectedSm === salesman ? 'selected' : null" (click)="select(salesman)" ></tr>
   </tbody>
 </table>
 

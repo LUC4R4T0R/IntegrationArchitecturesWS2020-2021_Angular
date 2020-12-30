@@ -24,3 +24,7 @@ tbody>tr:not(:last-child){
 tr:nth-child(even){
   background: #ececec;
 }
+
+tbody>tr.selected{
+  background: #00b7ff30;
+}

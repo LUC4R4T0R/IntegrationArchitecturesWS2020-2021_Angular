@@ -12,6 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { SettingsComponent } from './components/settings/settings.component';
 import { SalesmenTableComponent } from './components/salesmen-table/salesmen-table.component';
 import { SalesmenTableEntryComponent } from './components/salesmen-table-entry/salesmen-table-entry.component';
+import { SalesmanInfoComponent } from './components/salesman-info/salesman-info.component';
+import { SalesmanDetailsComponent } from './components/salesman-details/salesman-details.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { SalesmenTableEntryComponent } from './components/salesmen-table-entry/s
     MenuEntryComponent,
     SettingsComponent,
     SalesmenTableComponent,
-    SalesmenTableEntryComponent
+    SalesmenTableEntryComponent,
+    SalesmanInfoComponent,
+    SalesmanDetailsComponent
   ],
   imports: [
     BrowserModule,

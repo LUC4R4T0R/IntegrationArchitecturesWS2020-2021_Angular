@@ -1,5 +1,8 @@
-<div id="main">
+<div class="main-container">
   <h1>Overview</h1>
-  <app-salesmen-table></app-salesmen-table>
+  <div class="overview-container" >
+    <app-salesmen-table (selected)="setSelected($event)" id="table"></app-salesmen-table>
+    <app-salesman-info *ngIf="selected" [salesman]="selected" id="info"></app-salesman-info>
+  </div>
 </div>
 

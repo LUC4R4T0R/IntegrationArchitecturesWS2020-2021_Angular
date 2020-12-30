@@ -1,4 +1,12 @@
-#main{
-  width: 80%;
-  margin: 0 auto;
+.overview-container{
+  display: flex;
+  flex-direction: row;
+}
+#table{
+  flex-grow: 1;
+}
+#info{
+  margin-left: 16px;
+  min-width: 380px;
+  margin-top: -20px;
 }

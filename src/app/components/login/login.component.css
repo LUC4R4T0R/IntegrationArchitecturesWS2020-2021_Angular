@@ -24,6 +24,7 @@
 #main>form>input[type=text],#main>form>input[type=password]{
   border-radius: 3px;
   border: 1px solid grey;
+  color: var(--text-color);
 }
 
 #main>form>input[type=submit]{
@@ -38,5 +39,6 @@
   color: white;
   border: 1px solid white;
   background: var(--primary-gradient);
+  border-radius: 4px;
 }
 

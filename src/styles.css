@@ -3,9 +3,40 @@
   --primary-gradient: linear-gradient( 109.6deg,  rgba(48,207,208,1) 11.2%, rgba(51,8,103,1) 92.5% );
   --primary: rgba(48,207,208,1);
   --secondary: rgba(51,8,103,1);
+  --text-color: #484848;
+  --font-family: Arial, Helvetica, sans-serif;
 }
 
 body{
   margin: 0;
+  font-family: var(--font-family);
+  color: var(--text-color);
+}
+
+.main-container{
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px 50px;
+  margin: 0 auto;
+}
+
+input[type=button],input[type=submit]{
   font-family: Arial;
+  box-sizing: border-box;
+  display: block;
+  font-size: 20px;
+  margin: 8px 0;
+  padding: 6px;
+  border-radius: 3px;
+  border: 1px solid var(--secondary);
+  color: var(--secondary);
+  background: white;
+  cursor: pointer;
+}
+
+input[type=button]:hover,input[type=submit]:hover{
+  color: white;
+  border: 1px solid white;
+  background: var(--secondary);
+  border-radius: 4px;
 }

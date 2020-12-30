@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {Salesman} from "../../models/salesman";
-import {SalesmanService} from "../../services/salesman.service";
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Salesman } from "../../models/salesman";
+import { SalesmanService } from "../../services/salesman.service";
 
 @Component({
   selector: 'app-salesmen-table',
@@ -10,6 +10,8 @@ import {SalesmanService} from "../../services/salesman.service";
 export class SalesmenTableComponent implements OnInit {
 
   salesmen:Salesman[];
+  @Output() selected = new EventEmitter<Salesman>();
+  selectedSm:Salesman;
 
   constructor(private sm:SalesmanService) { }
 
@@ -21,4 +23,8 @@ export class SalesmenTableComponent implements OnInit {
     );
   }
 
+  select(sm:Salesman){
+    this.selectedSm = sm;
+    this.selected.emit(sm);
+  }
 }
