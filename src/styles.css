@@ -40,3 +40,46 @@ input[type=button]:hover,input[type=submit]:hover{
   background: var(--secondary);
   border-radius: 4px;
 }
+
+input[type=text],input[type=password], select{
+  border-radius: 3px;
+  border: 1px solid grey;
+  color: var(--text-color);
+  margin: 8px 0;
+  padding: 6px;
+}
+
+table {
+  width: 100%;
+  font-size: 20px;
+  border-collapse: collapse;
+}
+
+table th{
+  padding: 8px 10px;
+}
+
+table>thead>tr{
+  color: white;
+  background: var(--primary-gradient);
+}
+
+table>thead>tr>th{
+  text-align: start;
+}
+
+tbody>tr:not(:last-child){
+  border-bottom: 1px solid lightgrey;
+}
+
+tr:nth-child(even){
+  background: #ececec;
+}
+
+tbody>tr.selected{
+  background: #00b7ff30;
+}
+
+td{
+  padding: 6px 10px;
+}

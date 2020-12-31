@@ -1,0 +1,12 @@
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Target Value</th>
+    <th>Actual Value</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr app-evaluation-record-table-entry *ngFor="let entry of entries" [entry]="entry" ></tr>
+  </tbody>
+</table>

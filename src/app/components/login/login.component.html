@@ -1,7 +1,9 @@
 <div id="main">
-  <form (ngSubmit)="onLogin()" >
-    <input type="text" placeholder="Username" required name="username" [(ngModel)]="model.username">
-    <input type="password" placeholder="Password" required name="password" [(ngModel)]="model.password">
-    <input type="submit" value="Login">
-  </form>
+  <div id="wrapper">
+    <form (ngSubmit)="onLogin()" >
+      <input type="text" placeholder="Username" required name="username" [(ngModel)]="model.username">
+      <input type="password" placeholder="Password" required name="password" [(ngModel)]="model.password">
+      <input type="submit" value="Login">
+    </form>
+  </div>
 </div>

@@ -15,6 +15,8 @@ import { SalesmenTableEntryComponent } from './components/salesmen-table-entry/s
 import { SalesmanInfoComponent } from './components/salesman-info/salesman-info.component';
 import { SalesmanDetailsComponent } from './components/salesman-details/salesman-details.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { EvaluationRecordTableComponent } from './components/evaluation-record-table/evaluation-record-table.component';
+import { EvaluationRecordTableEntryComponent } from './components/evaluation-record-table-entry/evaluation-record-table-entry.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     SalesmenTableEntryComponent,
     SalesmanInfoComponent,
     SalesmanDetailsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    EvaluationRecordTableComponent,
+    EvaluationRecordTableEntryComponent
   ],
   imports: [
     BrowserModule,

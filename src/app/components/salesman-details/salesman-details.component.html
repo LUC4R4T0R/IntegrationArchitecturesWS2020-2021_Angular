@@ -1,6 +1,11 @@
 <div class="main-container">
-  <h2 *ngIf="salesman">{{ salesman.id }}: {{ salesman.firstname }} {{ salesman.lastname }}</h2>
-  <select>
-    <option *ngFor="let record of this.records" >{{record.year}}</option>
-  </select>
+  <div>
+    <h2 *ngIf="salesman" id="salesman">{{ salesman.id }}: {{ salesman.firstname }} {{ salesman.lastname }}</h2>
+    <select id="yearSelector" [(ngModel)]="currentYear" (change)="selectYear()">
+      <option *ngFor="let record of this.records" >{{record.year}}</option>
+    </select>
+  </div>
+  <div>
+    <app-evaluation-record-table [entries]="currentRecord" ></app-evaluation-record-table>
+  </div>
 </div>

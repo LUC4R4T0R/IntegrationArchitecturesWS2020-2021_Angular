@@ -4,6 +4,7 @@ import {Salesman} from "../../models/salesman";
 import {SalesmanService} from "../../services/salesman.service";
 import {EvaluationRecordService} from "../../services/evaluation-record.service";
 import {EvaluationRecord} from "../../models/evaluationRecord";
+import {EvaluationRecordEntry} from "../../models/evaluationRecordEntry";
 
 @Component({
   selector: 'app-salesman-details',
@@ -14,6 +15,8 @@ export class SalesmanDetailsComponent implements OnInit {
   id:number;
   salesman:Salesman;
   records:EvaluationRecord[];
+  currentRecord:EvaluationRecordEntry[];
+  currentYear:number;
 
   constructor(private route:ActivatedRoute, private sm:SalesmanService, private ev:EvaluationRecordService) { }
 
@@ -34,6 +37,11 @@ export class SalesmanDetailsComponent implements OnInit {
   loadRecords(){
     this.ev.getAllRecords(this.id).subscribe( result => {
       this.records = result;
+      this.currentRecord = result[0].entries;
     });
+  }
+
+  selectYear(){
+    this.currentRecord = this.records.filter(x => x.year == this.currentYear)[0].entries;
   }
 }
