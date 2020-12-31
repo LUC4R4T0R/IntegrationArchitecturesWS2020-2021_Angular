@@ -14,4 +14,8 @@ export class SalesmanService {
   getAllSalesmen():Observable<Salesman[]>{
     return this.http.get<Salesman[]>(this.salesmanPath);
   }
+
+  getSalesman(id:number):Observable<Salesman>{
+    return this.http.get<Salesman>(this.salesmanPath + '/' + id);
+  }
 }

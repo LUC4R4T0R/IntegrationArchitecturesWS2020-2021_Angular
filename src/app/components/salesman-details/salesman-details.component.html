@@ -1,0 +1,6 @@
+<div class="main-container">
+  <h2 *ngIf="salesman">{{ salesman.id }}: {{ salesman.firstname }} {{ salesman.lastname }}</h2>
+  <select>
+    <option *ngFor="let record of this.records" >{{record.year}}</option>
+  </select>
+</div>
