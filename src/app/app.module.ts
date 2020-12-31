@@ -14,6 +14,7 @@ import { SalesmenTableComponent } from './components/salesmen-table/salesmen-tab
 import { SalesmenTableEntryComponent } from './components/salesmen-table-entry/salesmen-table-entry.component';
 import { SalesmanInfoComponent } from './components/salesman-info/salesman-info.component';
 import { SalesmanDetailsComponent } from './components/salesman-details/salesman-details.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SalesmanDetailsComponent } from './components/salesman-details/salesman
     SalesmenTableComponent,
     SalesmenTableEntryComponent,
     SalesmanInfoComponent,
-    SalesmanDetailsComponent
+    SalesmanDetailsComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
