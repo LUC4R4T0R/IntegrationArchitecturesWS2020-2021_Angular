@@ -1,0 +1,17 @@
+<div class="modal-wrapper" (click)="dismissModal()">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <div class="title" >{{ title }} <a *ngIf="dismissible" class="close" (click)="dismissModal()">&times;</a></div>
+    <div class="content" >
+      <p *ngIf="textualContent">{{ textualContent }}</p>
+      <div *ngFor="let input of formContent">
+        <label>{{ input.title }}</label>
+        <input type="{{ input.type }}" value="{{ input.value }}" [(ngModel)]="outputValues[input.name]" [attr.placeholder]="input.placeholder ? input.placeholder : ''">
+      </div>
+    </div>
+    <div class="footer" >
+      <input type="button" class="submit" *ngIf="buttons && buttons['submit']" (click)="submitInput()" value="{{ buttons['submit'] }}" >
+      <input type="button" class="dismiss" *ngIf="buttons && buttons['dismiss']" (click)="dismissModal()" value="{{ buttons['dismiss'] }}" >
+    </div>
+  </div>
+</div>
+

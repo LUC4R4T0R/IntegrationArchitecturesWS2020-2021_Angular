@@ -1,0 +1,64 @@
+.modal-wrapper{
+  top:0;
+  left:0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  background: #30303040;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color);
+}
+
+.modal{
+  background: white;
+  padding: 16px;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.modal>.title{
+  font-size: 20px;
+  margin: 0 0 20px 0;
+  font-weight: bold;
+  min-width: 300px;
+}
+
+.modal>.title>.close{
+  float: right;
+  font-size: 32px;
+  line-height: 28px;
+  margin: -5px 0 0 10px;
+  font-weight: lighter;
+  cursor: pointer;
+}
+
+p{
+  margin: 4px 0;
+}
+
+input:not([type=button]){
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.modal>.footer{
+  margin-top: 12px;
+}
+
+.modal>.footer>input[type=button]{
+  float: right;
+  margin: 0 0 0 5px;
+  font-size: 16px;
+}
+
+.dismiss{
+  color: grey;
+  border-color: grey;
+}
+
+.dismiss:hover{
+  background-color: grey;
+}
