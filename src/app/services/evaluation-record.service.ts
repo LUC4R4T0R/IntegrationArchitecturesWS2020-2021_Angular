@@ -18,4 +18,8 @@ export class EvaluationRecordService {
   getRecord(id:number, year:number):Observable<EvaluationRecord[]>{
     return this.http.get<EvaluationRecord[]>('/api/salesman/' + id + '/evaluationrecord/' + year);
   }
+
+  addRecord(id:number, record:EvaluationRecord){
+    return this.http.post('/api/salesman/' + id + '/evaluationrecord/', record, {responseType: 'text'});
+  }
 }

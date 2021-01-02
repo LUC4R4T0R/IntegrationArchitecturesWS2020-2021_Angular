@@ -17,6 +17,7 @@ import { SalesmanDetailsComponent } from './components/salesman-details/salesman
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { EvaluationRecordTableComponent } from './components/evaluation-record-table/evaluation-record-table.component';
 import { EvaluationRecordTableEntryComponent } from './components/evaluation-record-table-entry/evaluation-record-table-entry.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { EvaluationRecordTableEntryComponent } from './components/evaluation-rec
     SalesmanDetailsComponent,
     NotFoundComponent,
     EvaluationRecordTableComponent,
-    EvaluationRecordTableEntryComponent
+    EvaluationRecordTableEntryComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

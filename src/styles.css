@@ -41,7 +41,7 @@ input[type=button]:hover,input[type=submit]:hover{
   border-radius: 4px;
 }
 
-input[type=text],input[type=password], select{
+input[type=text],input[type=password], input[type=number], select{
   border-radius: 3px;
   border: 1px solid grey;
   color: var(--text-color);
@@ -83,3 +83,4 @@ tbody>tr.selected{
 td{
   padding: 6px 10px;
 }
+
