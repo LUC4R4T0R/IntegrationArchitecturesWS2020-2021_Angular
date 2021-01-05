@@ -9,7 +9,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr app-evaluation-record-table-entry *ngFor="let entry of entries" [entry]="entry" ></tr>
+    <tr app-evaluation-record-table-entry *ngFor="let entry of entries" [entry]="entry" [smId]="smId" [year]="year" (update)="reloadEntries()"></tr>
     </tbody>
   </table>
   <app-modal *ngIf="displayEntryModal" title="Add Entry" [formContent]="entryModalInputs" [buttons]="{dismiss:'Abort', submit:'Add'}" (displayModal)="changeDisplayEntryModal($event)" (output)="addEntry($event)" ></app-modal>

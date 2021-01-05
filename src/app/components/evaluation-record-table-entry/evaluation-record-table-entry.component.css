@@ -1,1 +1,5 @@
-
+.control>a{
+  font-size: 28px;
+  line-height: 0.8em;
+  cursor: pointer;
+}

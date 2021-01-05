@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import { EvaluationRecordEntry } from "../../models/evaluationRecordEntry";
 import { ModalInput } from "../../models/modalInput";
 import { EvaluationRecordEntryService } from "../../services/evaluation-record-entry.service";
@@ -12,6 +12,7 @@ export class EvaluationRecordTableComponent implements OnInit {
   @Input() smId:number;
   @Input() year:number;
   @Input() entries:EvaluationRecordEntry[];
+  @Output() update = new EventEmitter();
   displayEntryModal:boolean = false;
   entryModalInputs:ModalInput[] = [
     new ModalInput('Name', 'name', 'text'),
@@ -22,11 +23,11 @@ export class EvaluationRecordTableComponent implements OnInit {
   constructor(private eve:EvaluationRecordEntryService) { }
 
   ngOnInit(): void {
-    console.log(this.year);
+
   }
 
   changeDisplayEntryModal(event:boolean){
-    this.displayEntryModal = event;
+    if(this.year !== undefined && this.year !== Infinity) this.displayEntryModal = event;
   }
 
   addEntry(data){
@@ -39,8 +40,6 @@ export class EvaluationRecordTableComponent implements OnInit {
   }
 
   reloadEntries(){
-    this.eve.fetchEntries(this.smId, this.year).subscribe(res => {
-      this.entries = res;
-    });
+    this.update.emit();
   }
 }

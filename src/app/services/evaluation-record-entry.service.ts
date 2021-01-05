@@ -10,11 +10,15 @@ export class EvaluationRecordEntryService {
 
   constructor(private http:HttpClient) { }
 
-  addEntry(id: number, year:number, entry:EvaluationRecordEntry):Observable<string>{
+  addEntry(id:number, year:number, entry:EvaluationRecordEntry):Observable<string>{
     return this.http.post('/api/salesman/' + id + '/evaluationrecord/' + year + '/entry', entry, {responseType: 'text'});
   }
 
-  fetchEntries(id: number, year: number):Observable<EvaluationRecordEntry[]>{
+  fetchEntries(id:number, year:number):Observable<EvaluationRecordEntry[]>{
     return this.http.get<EvaluationRecordEntry[]>('/api/salesman/' + id + '/evaluationrecord/' + year + '/entry');
+  }
+
+  deleteEntry(id:number, year:number, name:string):Observable<string>{
+    return this.http.delete('/api/salesman/' + id + '/evaluationrecord/' + year + '/entry/' + name, {responseType: 'text'});
   }
 }

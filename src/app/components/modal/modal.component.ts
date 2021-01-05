@@ -24,8 +24,10 @@ export class ModalComponent implements OnInit {
   }
 
   resetInputs(){
-    for (let input of this.formContent){
-      this.outputValues[input.name] = input.value;
+    if(this.formContent){
+      for (let input of this.formContent){
+        this.outputValues[input.name] = input.value;
+      }
     }
   }
 

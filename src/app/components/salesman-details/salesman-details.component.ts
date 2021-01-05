@@ -6,6 +6,7 @@ import {EvaluationRecordService} from "../../services/evaluation-record.service"
 import {EvaluationRecord} from "../../models/evaluationRecord";
 import {EvaluationRecordEntry} from "../../models/evaluationRecordEntry";
 import {ModalInput} from "../../models/modalInput";
+import {FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-salesman-details',
@@ -31,7 +32,6 @@ export class SalesmanDetailsComponent implements OnInit {
       this.loadSalesman();
       this.loadRecords().then(_=>{
         this.currentYear = Math.min(...this.records.map(rec => rec.year));
-        console.log(this.currentYear);
       });
     });
   }
@@ -45,8 +45,9 @@ export class SalesmanDetailsComponent implements OnInit {
   async loadRecords(){
     return new Promise((res, rej) => {
       this.ev.getAllRecords(this.id).subscribe( result => {
+        if(result === undefined) rej();
         this.records = result;
-        this.currentRecord = result[0].entries;
+        if(result[0]) this.currentRecord = result[0].entries;
         res();
       });
     });

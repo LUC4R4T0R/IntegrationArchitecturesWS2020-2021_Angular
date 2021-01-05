@@ -1,4 +1,8 @@
 <td>{{ entry.name }}</td>
 <td>{{ entry.target }}</td>
 <td>{{ entry.actual }}</td>
-<td></td>
+<td class="control">
+  <a (click)="deleteMessage(true)"  >&times;</a>
+</td>
+<app-modal *ngIf="displayDeleteModal" [title]="'Deleting Entry: ' + entry.name" (displayModal)="deleteMessage($event)" textualContent="Do you really want to delete this Entry?" [buttons]="modalButtons" (output)="deleteEntry()"></app-modal>
+
