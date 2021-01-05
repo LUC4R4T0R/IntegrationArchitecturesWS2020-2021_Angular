@@ -20,6 +20,10 @@ export class ModalComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.resetInputs();
+  }
+
+  resetInputs(){
     for (let input of this.formContent){
       this.outputValues[input.name] = input.value;
     }
@@ -27,6 +31,7 @@ export class ModalComponent implements OnInit {
 
   dismissModal(){
     if(this.dismissible){
+      this.resetInputs();
       this.displayModal.emit(false);
     }
   }

@@ -29,7 +29,10 @@ export class SalesmanDetailsComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = params['id'];
       this.loadSalesman();
-      this.loadRecords();
+      this.loadRecords().then(_=>{
+        this.currentYear = Math.min(...this.records.map(rec => rec.year));
+        console.log(this.currentYear);
+      });
     });
   }
 
@@ -40,9 +43,12 @@ export class SalesmanDetailsComponent implements OnInit {
   }
 
   async loadRecords(){
-    return this.ev.getAllRecords(this.id).subscribe( result => {
-      this.records = result;
-      this.currentRecord = result[0].entries;
+    return new Promise((res, rej) => {
+      this.ev.getAllRecords(this.id).subscribe( result => {
+        this.records = result;
+        this.currentRecord = result[0].entries;
+        res();
+      });
     });
   }
 
@@ -65,7 +71,6 @@ export class SalesmanDetailsComponent implements OnInit {
 
   reload(year){
     this.loadRecords().then(()=>{
-      console.log(this.records);
       this.selectYear(year);
     });
   }
