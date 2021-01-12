@@ -11,6 +11,8 @@ import { EvaluationRecordEntryService } from "../../services/evaluation-record-e
 export class EvaluationRecordTableComponent implements OnInit {
   @Input() smId:number;
   @Input() year:number;
+  @Input() displayBonus:boolean = false;
+  @Input() editable:boolean = false;
   @Input() entries:EvaluationRecordEntry[];
   @Output() update = new EventEmitter();
   displayEntryModal:boolean = false;

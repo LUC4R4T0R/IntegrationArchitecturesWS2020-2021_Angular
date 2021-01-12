@@ -1,0 +1,16 @@
+<table>
+  <thead>
+  <tr>
+    <th>Product</th>
+    <th>Amount</th>
+    <th>Customer</th>
+    <th>Customer Ranking</th>
+    <th>Bonus</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr app-sales-table-entry *ngFor="let order of sales" [order]="order" ></tr>
+  </tbody>
+  <caption *ngIf="sales === undefined || sales.length === 0" >No entries were found!</caption>
+</table>
+

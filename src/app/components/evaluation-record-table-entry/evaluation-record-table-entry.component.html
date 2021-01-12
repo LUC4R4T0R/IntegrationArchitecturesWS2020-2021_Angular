@@ -1,7 +1,8 @@
 <td>{{ entry.name }}</td>
 <td>{{ entry.target }}</td>
 <td>{{ entry.actual }}</td>
-<td class="control">
+<td *ngIf="displayBonus ">{{ entry.bonus ? entry.bonus.toString().slice(0,entry.bonus.toString().length - 2) + ',' + entry.bonus.toString().slice(entry.bonus.toString().length - 2) + ' €' : '' }}</td>
+<td class="control" *ngIf="editable">
   <a (click)="deleteMessage(true)"  >&times;</a>
 </td>
 <app-modal *ngIf="displayDeleteModal" [title]="'Deleting Entry: ' + entry.name" (displayModal)="deleteMessage($event)" textualContent="Do you really want to delete this Entry?" [buttons]="modalButtons" (output)="deleteEntry()"></app-modal>

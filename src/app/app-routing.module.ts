@@ -7,12 +7,14 @@ import { SettingsComponent } from "./components/settings/settings.component";
 import { LoginGuard } from "./LoginGuard";
 import {SalesmanDetailsComponent} from "./components/salesman-details/salesman-details.component";
 import {NotFoundComponent} from "./components/not-found/not-found.component";
+import {BonusComponent} from "./components/bonus/bonus.component";
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'overview', component: OverviewComponent, canActivate: [LoginGuard]},
   {path: 'settings', component: SettingsComponent, canActivate: [LoginGuard]},
   {path: 'salesman/:id', component: SalesmanDetailsComponent, canActivate: [LoginGuard]},
+  {path: 'salesman/:id/bonus', component: BonusComponent, canActivate: [LoginGuard]},
   {path: '**', component: NotFoundComponent}
 ];
 

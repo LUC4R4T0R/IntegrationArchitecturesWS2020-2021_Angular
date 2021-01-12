@@ -1,0 +1,30 @@
+<div class="main-container">
+  <div>
+    <h2 *ngIf="salesman" id="salesman">{{ salesman.id }}: {{ salesman.firstname }} {{ salesman.lastname }}</h2>
+    <select id="yearSelector" [(ngModel)]="currentYear" (change)="selectYear()">
+      <option *ngFor="let record of this.records" >{{record.year}}</option>
+    </select>
+  </div>
+  <div class="table">
+    <h3>Order Evaluation</h3>
+    <app-sales-table [sales]="sales" ></app-sales-table>
+  </div>
+  <div class="table">
+    <h3>Performance Evaluation</h3>
+    <app-evaluation-record-table [entries]="currentRecord" [smId]="id" [displayBonus]="true" [year]="currentYear" (update)="loadRecords()"></app-evaluation-record-table>
+  </div>
+  <div id="bottom">
+    <div id="remarks">
+      <h3>Remarks</h3>
+      <textarea [(ngModel)]="remarks" ></textarea>
+    </div>
+    <div id="total">
+      <h3>Total Bonus</h3>
+      <span>{{ sum.toString().slice(0, sum.toString().length - 2) + ',' + sum.toString().slice(sum.toString().length - 2) + ' €' }}</span>
+    </div>
+    <div id="controls">
+      <button (click)="saveRemarks()" >Save Remarks</button>
+      <button>Reload Orders</button>
+    </div>
+  </div>
+</div>

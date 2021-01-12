@@ -6,3 +6,8 @@
   font-weight: lighter;
   cursor: pointer;
 }
+
+caption{
+  caption-side: bottom;
+  padding: 6px 10px;
+}

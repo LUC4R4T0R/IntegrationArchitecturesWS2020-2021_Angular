@@ -7,7 +7,7 @@
     <a id="addRecordLink" (click)="displayAddERModal(true)" >+</a>
   </div>
   <div>
-    <app-evaluation-record-table [entries]="currentRecord" [smId]="id" [year]="currentYear" (update)="loadRecords()"></app-evaluation-record-table>
+    <app-evaluation-record-table [entries]="currentRecord" [editable]="true" [smId]="id" [year]="currentYear" (update)="loadRecords()"></app-evaluation-record-table>
   </div>
   <app-modal *ngIf="displayERModal" title="Add Evaluation Record" [formContent]="addERInputs" [buttons]="{dismiss:'Abort', submit:'Add'}" (displayModal)="displayAddERModal($event)"  (output)="addER($event)" ></app-modal>
 </div>

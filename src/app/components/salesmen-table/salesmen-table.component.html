@@ -9,5 +9,6 @@
   <tbody>
     <tr app-salesmen-table-entry *ngFor="let salesman of salesmen" [salesman]="salesman" [attr.class]="selectedSm === salesman ? 'selected' : null" (click)="select(salesman)" ></tr>
   </tbody>
+  <caption *ngIf="salesmen === undefined || salesmen.length === 0" >No entries were found!</caption>
 </table>
 

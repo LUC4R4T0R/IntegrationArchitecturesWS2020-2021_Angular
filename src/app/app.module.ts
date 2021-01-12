@@ -18,6 +18,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { EvaluationRecordTableComponent } from './components/evaluation-record-table/evaluation-record-table.component';
 import { EvaluationRecordTableEntryComponent } from './components/evaluation-record-table-entry/evaluation-record-table-entry.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { BonusComponent } from './components/bonus/bonus.component';
+import { SalesTableComponent } from './components/sales-table/sales-table.component';
+import { SalesTableEntryComponent } from './components/sales-table-entry/sales-table-entry.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { ModalComponent } from './components/modal/modal.component';
     NotFoundComponent,
     EvaluationRecordTableComponent,
     EvaluationRecordTableEntryComponent,
-    ModalComponent
+    ModalComponent,
+    BonusComponent,
+    SalesTableComponent,
+    SalesTableEntryComponent
   ],
   imports: [
     BrowserModule,

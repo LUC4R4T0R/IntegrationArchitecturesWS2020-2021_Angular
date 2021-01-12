@@ -20,7 +20,7 @@ body{
   margin: 0 auto;
 }
 
-input[type=button],input[type=submit]{
+input[type=button],input[type=submit],button{
   font-family: Arial;
   box-sizing: border-box;
   display: block;
@@ -34,17 +34,18 @@ input[type=button],input[type=submit]{
   cursor: pointer;
 }
 
-input[type=button]:hover,input[type=submit]:hover{
+input[type=button]:hover,input[type=submit]:hover,button:hover{
   color: white;
   border: 1px solid white;
   background: var(--secondary);
   border-radius: 4px;
 }
 
-input[type=text],input[type=password], input[type=number], select{
+input[type=text],input[type=password], input[type=number], select, textarea{
   border-radius: 3px;
   border: 1px solid grey;
   color: var(--text-color);
+  font-family: Arial, Helvetica, sans-serif;
   margin: 8px 0;
   padding: 6px;
 }

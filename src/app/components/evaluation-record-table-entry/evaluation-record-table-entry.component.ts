@@ -11,6 +11,8 @@ export class EvaluationRecordTableEntryComponent implements OnInit {
   @Input() entry:EvaluationRecordEntry;
   @Input() smId:number;
   @Input() year:number;
+  @Input() displayBonus:boolean = false;
+  @Input() editable:boolean = false;
   @Output() update = new EventEmitter();
   displayDeleteModal:boolean;
   modalButtons = {
