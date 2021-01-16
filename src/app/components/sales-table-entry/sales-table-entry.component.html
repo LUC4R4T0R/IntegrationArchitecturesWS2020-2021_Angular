@@ -1,6 +1,6 @@
-<td>{{ order.product }}</td>
-<td>{{ order.amount }}</td>
+<td>{{ order.name }}</td>
+<td>{{ order.quantity }}</td>
 <td>{{ order.customer.name }}</td>
-<td>{{ order.customer.rating }}</td>
+<td>{{ ratings[order.customer.rating] }}</td>
 <td>{{ order.bonus.toString().slice(0,order.bonus.toString().length - 2) + ',' + order.bonus.toString().slice(order.bonus.toString().length - 2) + ' €' }}</td>
 

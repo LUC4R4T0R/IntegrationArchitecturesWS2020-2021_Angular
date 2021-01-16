@@ -7,6 +7,11 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class SalesTableEntryComponent implements OnInit {
   @Input() order;
+  ratings = {
+    1:'A (hot)',
+    2:'B (warm)',
+    3:'C (neutral)'
+  };
 
   constructor() { }
 

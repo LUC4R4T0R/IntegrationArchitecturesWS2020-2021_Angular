@@ -5,6 +5,8 @@ import {EvaluationRecordService} from "../../services/evaluation-record.service"
 import {Salesman} from "../../models/salesman";
 import {EvaluationRecord} from "../../models/evaluationRecord";
 import {EvaluationRecordEntry} from "../../models/evaluationRecordEntry";
+import {BonusService} from "../../services/bonus.service";
+import {Product} from "../../models/product";
 
 @Component({
   selector: 'app-bonus',
@@ -18,44 +20,37 @@ export class BonusComponent implements OnInit {
   currentYear: number;
   currentRecord: EvaluationRecordEntry[];
   sum: number = 0;
-  remarks:string = 'This is a Test';
-  sales = [
-    {
-      product: 'Hoover GO',
-      amount: 10,
-      customer: {
-        name: 'Telekom AG',
-        rating: 'good'
-      },
-      bonus: 20000
-    },
-    {
-      product: 'Hoover clean',
-      amount: 6,
-      customer: {
-        name: 'KL Engineering',
-        rating: 'superb'
-      },
-      bonus: 40000
-    }
-  ];
+  remarks:string = '';
+  sales:Product[] = [];
 
-  constructor(private route:ActivatedRoute, private sm:SalesmanService, private ev:EvaluationRecordService) { }
+  constructor(private route:ActivatedRoute, private sm:SalesmanService, private ev:EvaluationRecordService, private bo:BonusService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.id = params['id'];
       this.loadSalesman();
-      this.loadRecords().then(_=>{
-        this.currentYear = Math.min(...this.records.map(rec => rec.year));
-        this.calculateSum();
-      });
+      this.loadRecords()
+        .then(_=>{
+          this.currentYear = Math.min(...this.records.map(rec => rec.year));
+          return this.loadEvaluation();
+         })
+        .then(_ => this.calculateSum());
     });
   }
 
   loadSalesman(){
     this.sm.getSalesman(this.id).subscribe(result => {
       this.salesman = result;
+    });
+  }
+
+  async loadEvaluation(){
+    return new Promise((res, rej) => {
+      this.bo.fetchOrderEvaluation(this.id, this.currentYear).subscribe(orderEv => {
+        this.sales = orderEv.products;
+        this.remarks = orderEv.remarks;
+        res();
+      });
     });
   }
 
@@ -72,15 +67,18 @@ export class BonusComponent implements OnInit {
 
   selectYear(year:number = this.currentYear){
     this.currentRecord = this.records.filter(x => x.year == year)[0].entries;
+    this.loadEvaluation();
   }
 
   calculateSum(){
     this.sum = 0;
     for(let order of this.sales){
-      this.sum += order.bonus;
+      if (order.bonus) this.sum += order.bonus;
     }
-    for(let entry of this.currentRecord){
-      if(entry.bonus) this.sum += entry.bonus;
+    if(this.currentRecord !== null) {
+      for (let entry of this.currentRecord) {
+        if (entry.bonus) this.sum += entry.bonus;
+      }
     }
   }
 

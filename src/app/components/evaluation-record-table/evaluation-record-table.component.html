@@ -12,7 +12,7 @@
     <tbody>
     <tr app-evaluation-record-table-entry *ngFor="let entry of entries" [displayBonus]="displayBonus" [editable]="editable" [entry]="entry" [smId]="smId" [year]="year" (update)="reloadEntries()"></tr>
     </tbody>
-    <caption *ngIf="entries === undefined || entries.length === 0" >No entries were found!</caption>
+    <caption *ngIf="entries === undefined || entries === null || entries.length === 0" >No entries were found!</caption>
   </table>
   <app-modal *ngIf="displayEntryModal" title="Add Entry" [formContent]="entryModalInputs" [buttons]="{dismiss:'Abort', submit:'Add'}" (displayModal)="changeDisplayEntryModal($event)" (output)="addEntry($event)" ></app-modal>
 </div>
