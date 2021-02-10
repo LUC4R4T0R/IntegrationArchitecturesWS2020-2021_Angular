@@ -21,4 +21,8 @@ export class EvaluationRecordEntryService {
   deleteEntry(id:number, year:number, name:string):Observable<string>{
     return this.http.delete('/api/salesman/' + id + '/evaluationrecord/' + year + '/entry/' + name, {responseType: 'text'});
   }
+
+  updateEntry(id:number, year:number, entry:EvaluationRecordEntry){
+    return this.http.put('/api/salesman/' + id + '/evaluationrecord/' + year + '/entry', entry, {responseType: 'text'});
+  }
 }

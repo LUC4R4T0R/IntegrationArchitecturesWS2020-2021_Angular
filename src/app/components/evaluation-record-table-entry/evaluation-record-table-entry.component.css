@@ -1,5 +1,15 @@
 .control>a{
-  font-size: 28px;
-  line-height: 0.8em;
+
   cursor: pointer;
+}
+
+.editButton{
+  margin-right: 0.4rem;
+  line-height: 0.7rem;
+  font-size: 22px;
+}
+
+.deleteButton{
+  line-height: 0.4rem;
+  font-size: 30px;
 }

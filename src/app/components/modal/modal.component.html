@@ -5,7 +5,7 @@
       <p *ngIf="textualContent">{{ textualContent }}</p>
       <div *ngFor="let input of formContent">
         <label>{{ input.title }}</label>
-        <input type="{{ input.type }}" value="{{ input.value }}" [(ngModel)]="outputValues[input.name]" [attr.placeholder]="input.placeholder ? input.placeholder : ''">
+        <input type="{{ input.type }}" value="{{ input.value }}" [(ngModel)]="outputValues[input.name]" [attr.placeholder]="input.placeholder ? input.placeholder : null" [attr.disabled]="input.disabled ? '' : null">
       </div>
     </div>
     <div class="footer" >

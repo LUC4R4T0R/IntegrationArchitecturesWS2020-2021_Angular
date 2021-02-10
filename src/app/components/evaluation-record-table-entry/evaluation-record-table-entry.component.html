@@ -3,7 +3,8 @@
 <td>{{ entry.actual }}</td>
 <td *ngIf="displayBonus ">{{ entry.bonus ? entry.bonus.toString().slice(0,entry.bonus.toString().length - 2) + ',' + entry.bonus.toString().slice(entry.bonus.toString().length - 2) + ' €' : '' }}</td>
 <td class="control" *ngIf="editable">
-  <a (click)="deleteMessage(true)"  >&times;</a>
+  <a class="editButton" (click)="changeDisplayEditModal(true)" >&#9998;</a>
+  <a class="deleteButton" (click)="deleteMessage(true)" >&times;</a>
 </td>
 <app-modal *ngIf="displayDeleteModal" [title]="'Deleting Entry: ' + entry.name" (displayModal)="deleteMessage($event)" textualContent="Do you really want to delete this Entry?" [buttons]="modalButtons" (output)="deleteEntry()"></app-modal>
-
+<app-modal *ngIf="displayEditModal" title="Edit Entry" [formContent]="editModalInputs" [buttons]="{dismiss:'Abort', submit:'Save'}" (displayModal)="changeDisplayEditModal($event)" (output)="saveEntry($event)" ></app-modal>

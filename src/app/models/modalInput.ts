@@ -4,6 +4,7 @@ export class ModalInput{
     public name:string,
     public type:string,
     public value?:string,
-    public placeholder?:string
+    public placeholder?:string,
+    public disabled?:boolean
   ) {  }
 }
