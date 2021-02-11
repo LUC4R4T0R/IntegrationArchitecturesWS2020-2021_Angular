@@ -11,6 +11,6 @@ export class BonusService {
   constructor(private http:HttpClient) { }
 
   fetchOrderEvaluation(smId:number, year:number):Observable<OrderEvaluation>{
-    return this.http.get<OrderEvaluation>('/api/salesman/' + smId + '/bonus/' + year + '/get_orders');
+    return this.http.get<OrderEvaluation>('/api/salesman/' + smId + '/bonus/' + year + '/get_review');
   }
 }

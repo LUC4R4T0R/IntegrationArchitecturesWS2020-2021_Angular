@@ -1,0 +1,14 @@
+<table>
+  <thead>
+  <tr>
+    <th>Username</th>
+    <th>Name</th>
+    <th>ID</th>
+    <th>Usergroup</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr app-user-management-table-entry *ngFor="let user of users" [user]="user" ></tr>
+  </tbody>
+  <caption *ngIf="users === undefined || users.length === 0" >No entries were found!</caption>
+</table>

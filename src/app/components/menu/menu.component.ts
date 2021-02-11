@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
 import { MenuEntry } from "../../models/menu-entry";
 import { Router } from "@angular/router";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-menu',
@@ -12,11 +13,12 @@ export class MenuComponent implements OnInit {
   entries:MenuEntry[] = [
     new MenuEntry('ia2020', '../overview'),
     new MenuEntry('Overview', '../overview'),
+    new MenuEntry('User Management', '../users'),
     new MenuEntry('Settings', '../settings'),
     new MenuEntry('Swagger', undefined, 'http://localhost:8080/api/swagger-api'),
   ];
 
-  constructor(private auth:AuthService, private router:Router) { }
+  constructor(private auth:AuthService, private us:UserService, private router:Router) { }
 
   displayName:string;
 
@@ -33,7 +35,7 @@ export class MenuComponent implements OnInit {
   }
 
   loadDisplayname(){
-    this.auth.getUserInfo().subscribe(user =>{
+    this.us.getUserInfo().subscribe(user =>{
       this.displayName = user.displayname;
     });
   }

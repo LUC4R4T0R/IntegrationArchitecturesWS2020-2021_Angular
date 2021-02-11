@@ -21,6 +21,9 @@ import { ModalComponent } from './components/modal/modal.component';
 import { BonusComponent } from './components/bonus/bonus.component';
 import { SalesTableComponent } from './components/sales-table/sales-table.component';
 import { SalesTableEntryComponent } from './components/sales-table-entry/sales-table-entry.component';
+import { UserManagementComponent } from './components/user-management/user-management.component';
+import { UserManagementTableComponent } from './components/user-management-table/user-management-table.component';
+import { UserManagementTableEntryComponent } from './components/user-management-table-entry/user-management-table-entry.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { SalesTableEntryComponent } from './components/sales-table-entry/sales-t
     ModalComponent,
     BonusComponent,
     SalesTableComponent,
-    SalesTableEntryComponent
+    SalesTableEntryComponent,
+    UserManagementComponent,
+    UserManagementTableComponent,
+    UserManagementTableEntryComponent
   ],
   imports: [
     BrowserModule,
