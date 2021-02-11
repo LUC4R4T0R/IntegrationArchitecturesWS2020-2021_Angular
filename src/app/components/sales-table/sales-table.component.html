@@ -10,6 +10,15 @@
   </thead>
   <tbody>
     <tr app-sales-table-entry *ngFor="let order of sales" [order]="order" ></tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td style="text-align: right" >Total:</td>
+      <td>
+        {{ bonus.toString().slice(0,bonus.toString().length - 2) + ',' + bonus.toString().slice(bonus.toString().length - 2) + ' €' }}
+      </td>
+    </tr>
   </tbody>
   <caption *ngIf="sales === undefined || sales.length === 0" >No entries were found!</caption>
 </table>
