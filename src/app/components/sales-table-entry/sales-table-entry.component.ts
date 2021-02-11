@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {moneyFormatter} from "../../lib/formatting";
 
 @Component({
   selector: '[app-sales-table-entry]',
@@ -7,6 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class SalesTableEntryComponent implements OnInit {
   @Input() order;
+  moneyFormatter = moneyFormatter;
   ratings = {
     1:'A (hot)',
     2:'B (warm)',

@@ -1,4 +1,5 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import {moneyFormatter} from "../../lib/formatting";
 
 @Component({
   selector: 'app-sales-table',
@@ -8,6 +9,7 @@ import {Component, Input, OnChanges, OnInit} from '@angular/core';
 export class SalesTableComponent implements OnInit, OnChanges {
   @Input() sales;
   bonus: number = 0;
+  moneyFormatter = moneyFormatter;
 
   constructor() { }
 

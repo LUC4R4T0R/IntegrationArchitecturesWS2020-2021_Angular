@@ -20,7 +20,7 @@
     </div>
     <div id="total">
       <h3>Total Bonus</h3>
-      <span>{{ sum.toString().slice(0, sum.toString().length - 2) + ',' + sum.toString().slice(sum.toString().length - 2) + ' €' }}</span>
+      <span>{{ moneyFormatter(sum) }}</span>
     </div>
     <div id="controls">
       <button (click)="saveRemarks()" >Save Remarks</button>

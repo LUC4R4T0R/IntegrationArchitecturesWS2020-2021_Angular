@@ -16,7 +16,7 @@
       <td></td>
       <td style="text-align: right" >Total:</td>
       <td>
-        {{ bonus.toString().slice(0,bonus.toString().length - 2) + ',' + bonus.toString().slice(bonus.toString().length - 2) + ' €' }}
+        {{ moneyFormatter(bonus) }}
       </td>
     </tr>
   </tbody>

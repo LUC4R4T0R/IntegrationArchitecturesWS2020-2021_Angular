@@ -2,5 +2,5 @@
 <td>{{ order.quantity }}</td>
 <td>{{ order.customer.name }}</td>
 <td>{{ ratings[order.customer.rating] }}</td>
-<td>{{ order.bonus.toString().slice(0,order.bonus.toString().length - 2) + ',' + order.bonus.toString().slice(order.bonus.toString().length - 2) + ' €' }}</td>
+<td>{{ moneyFormatter(order.bonus) }}</td>
 

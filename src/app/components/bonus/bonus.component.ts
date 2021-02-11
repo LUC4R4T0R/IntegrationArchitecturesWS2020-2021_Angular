@@ -7,6 +7,7 @@ import {EvaluationRecord} from "../../models/evaluationRecord";
 import {EvaluationRecordEntry} from "../../models/evaluationRecordEntry";
 import {BonusService} from "../../services/bonus.service";
 import {Product} from "../../models/product";
+import {moneyFormatter} from "../../lib/formatting";
 
 @Component({
   selector: 'app-bonus',
@@ -22,6 +23,7 @@ export class BonusComponent implements OnInit {
   sum: number = 0;
   remarks:string = '';
   sales:Product[] = [];
+  moneyFormatter = moneyFormatter;
 
   constructor(private route:ActivatedRoute, private sm:SalesmanService, private ev:EvaluationRecordService, private bo:BonusService) { }
 
