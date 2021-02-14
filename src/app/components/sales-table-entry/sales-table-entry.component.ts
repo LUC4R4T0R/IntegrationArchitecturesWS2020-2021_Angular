@@ -10,9 +10,9 @@ export class SalesTableEntryComponent implements OnInit {
   @Input() order;
   moneyFormatter = moneyFormatter;
   ratings = {
-    1:'A (hot)',
-    2:'B (warm)',
-    3:'C (neutral)'
+    1:'excellent (A / hot)',
+    2:'very good (B / warm)',
+    3:'good (C / neutral)'
   };
 
   constructor() { }
