@@ -5,10 +5,11 @@
     <th>Name</th>
     <th>ID</th>
     <th>Usergroup</th>
+    <th id="plus" >+</th>
   </tr>
   </thead>
   <tbody>
-  <tr app-user-management-table-entry *ngFor="let user of users" [user]="user" ></tr>
+  <tr app-user-management-table-entry *ngFor="let user of users" [user]="user" (update)="fetchUsers()" ></tr>
   </tbody>
   <caption *ngIf="users === undefined || users.length === 0" >No entries were found!</caption>
 </table>
