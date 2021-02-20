@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {User} from "../../models/user";
-import {ModalInput} from "../../models/modalInput";
+import {ModalInput, Option} from "../../models/modalInput";
 import {UserService} from "../../services/user.service";
 
 @Component({
@@ -19,11 +19,18 @@ export class UserManagementTableEntryComponent implements OnInit {
     submit:'Delete',
     dismiss:'Abort'
   }
+  groupOptions: Option[] = [
+    new Option('Guest', '0'),
+    new Option('Sales', '1'),
+    new Option('Human Resources', '2'),
+    new Option('Management', '3'),
+    new Option('Admin', '4')
+  ];
   editModalInputs:ModalInput[] = [
-    new ModalInput('Username', 'username', 'text'),
+    new ModalInput('Username', 'username', 'text', undefined, undefined, true),
     new ModalInput('Name', 'displayname', 'text'),
     new ModalInput('Employee ID', 'employeeId', 'number'),
-    new ModalInput('Usergroup', 'group', 'number')
+    new ModalInput('Usergroup', 'group', 'select', undefined, undefined, false, this.groupOptions)
   ];
   passwordModalInputs:ModalInput[] = [
     new ModalInput('Old Password', 'oldPassword', 'password'),
@@ -31,11 +38,11 @@ export class UserManagementTableEntryComponent implements OnInit {
     new ModalInput('New Password (Repeated)', 'newPasswordB', 'password')
   ];
   groups:string[] = [
-    'guest',
-    'sales',
-    'human resources',
-    'management',
-    'admin'
+    'Guest',
+    'Sales',
+    'Human Resources',
+    'Management',
+    'Admin'
   ];
 
   constructor(private us: UserService) { }
@@ -44,7 +51,7 @@ export class UserManagementTableEntryComponent implements OnInit {
     this.editModalInputs[0].value = this.user.username;
     this.editModalInputs[1].value = this.user.displayname;
     this.editModalInputs[2].value = this.user.employeeId ? this.user.employeeId.toString() : '';
-    this.editModalInputs[3].value = this.user.group ? this.user.group.toString() : '';
+    this.editModalInputs[3].value = '4';//this.user.group ? this.user.group.toString() : '';
   }
 
   deleteMessage(state){

@@ -8,6 +8,6 @@
   <a class="deleteButton" (click)="deleteMessage(true)" >&times;</a>
 </td>
 <app-modal *ngIf="displayDeleteModal" [title]="'Deleting User: ' + user.displayname" (displayModal)="deleteMessage($event)" textualContent="Do you really want to delete this User?" [buttons]="modalButtons" (output)="deleteUser()"></app-modal>
-<app-modal *ngIf="displayEditModal" title="Edit Entry" [formContent]="editModalInputs" [buttons]="{dismiss:'Abort', submit:'Save'}" (displayModal)="changeDisplayEditModal($event)" (output)="saveUser($event)" ></app-modal>
+<app-modal *ngIf="displayEditModal" title="Edit User" [formContent]="editModalInputs" [buttons]="{dismiss:'Abort', submit:'Save'}" (displayModal)="changeDisplayEditModal($event)" (output)="saveUser($event)" ></app-modal>
 <app-modal *ngIf="displayPasswordUpdateModal" title="Change Password" [formContent]="passwordModalInputs" [buttons]="{dismiss:'Abort', submit:'Save'}" (displayModal)="changeDisplayPasswordUpdateModal($event)" [textualContent]="changePasswordMessage"  (output)="updatePassword($event)" ></app-modal>
 
