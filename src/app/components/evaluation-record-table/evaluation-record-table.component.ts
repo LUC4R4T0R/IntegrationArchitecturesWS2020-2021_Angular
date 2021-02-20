@@ -47,7 +47,7 @@ export class EvaluationRecordTableComponent implements OnInit {
 
   addEntry(data){
     this.eve.addEntry(this.smId, this.year, new EvaluationRecordEntry(data.name, data.target, data.actual)).subscribe(res => {
-      if(res === 'success'){
+      if(res.status === 200){
         this.reloadEntries();
         this.changeDisplayEntryModal(false);
       }

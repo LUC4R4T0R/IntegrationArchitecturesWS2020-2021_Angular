@@ -12,7 +12,9 @@ export class SalesTableEntryComponent implements OnInit {
   ratings = {
     1:'excellent (A / hot)',
     2:'very good (B / warm)',
-    3:'good (C / neutral)'
+    3:'good (C / neutral)',
+    4:'mediocre (D / cold)',
+    5:'bad (E / avoid)'
   };
 
   constructor() { }

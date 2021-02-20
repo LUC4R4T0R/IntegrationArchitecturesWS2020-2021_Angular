@@ -63,7 +63,7 @@ export class SalesmanDetailsComponent implements OnInit {
 
   addER(data){
     this.ev.addRecord(this.id, new EvaluationRecord(data.year, [])).subscribe(res => {
-      if(res === 'success'){
+      if(res.status === 200){
           this.displayAddERModal(false);
           this.reload(data.year);
       }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {Salesman} from "../models/salesman";
 import {EvaluationRecord} from "../models/evaluationRecord";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpResponse} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class EvaluationRecordService {
     return this.http.get<EvaluationRecord[]>('/api/salesman/' + id + '/evaluationrecord/' + year);
   }
 
-  addRecord(id:number, record:EvaluationRecord){
-    return this.http.post('/api/salesman/' + id + '/evaluationrecord/', record, {responseType: 'text'});
+  addRecord(id:number, record:EvaluationRecord):Observable<HttpResponse<string>>{
+    return this.http.post('/api/salesman/' + id + '/evaluationrecord/', record, {observe: 'response', responseType: 'text'});
   }
 }

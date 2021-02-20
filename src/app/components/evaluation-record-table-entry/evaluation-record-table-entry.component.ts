@@ -45,7 +45,7 @@ export class EvaluationRecordTableEntryComponent implements OnInit {
 
   saveEntry(data){
     this.eve.updateEntry(this.smId, this.year, new EvaluationRecordEntry(this.entry.name, data.target, data.actual)).subscribe(res => {
-      if(res === 'success'){
+      if(res.status === 200){
         this.changeDisplayEditModal(false);
         this.update.emit();
       }
@@ -54,7 +54,7 @@ export class EvaluationRecordTableEntryComponent implements OnInit {
 
   deleteEntry(){
     this.eve.deleteEntry(this.smId, this.year, this.entry.name).subscribe(res => {
-      if(res === 'success'){
+      if(res.status === 200){
         this.deleteMessage(false);
         this.update.emit();
       }

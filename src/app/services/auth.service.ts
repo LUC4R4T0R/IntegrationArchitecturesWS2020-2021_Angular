@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import {HttpClient, HttpResponse} from "@angular/common/http";
 import { Credentials } from "../models/credentials";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
@@ -17,9 +17,9 @@ export class AuthService {
     return this.http.post(this.loginPath, credentials, {responseType: 'text'});
   }
 
-  logout():Observable<any>{
+  logout():Observable<HttpResponse<any>>{
     console.log('logging out');
-    return this.http.delete(this.loginPath);
+    return this.http.delete(this.loginPath, {observe: 'response'});
   }
 
   isLoggedIn():Observable<boolean>{
