@@ -51,7 +51,7 @@ export class UserManagementTableComponent implements OnInit {
 
   addUser(data){
     if(data.passwordA === data.passwordB){
-      this.us.addUser(new User(data.username, data.displayname, data.passwordA, data.group, data.employeeId)).subscribe(res => {
+      this.us.addUser(new User(data.username, data.displayname, data.passwordA, parseInt(data.group), parseInt(data.employeeId))).subscribe(res => {
         if(res.status === 200){
           this.fetchUsers();
           this.changeDisplayAddModal(false);
