@@ -1,6 +1,8 @@
 <nav>
-  <app-menu-entry *ngFor="let entry of this.entries" [entry]="entry" ></app-menu-entry>
+  <ng-container *ngFor="let entry of this.entries">
+    <app-menu-entry *ngIf="user.group >= entry.mingroup && user.group <= entry.maxgroup" [entry]="entry" ></app-menu-entry>
+  </ng-container>
   <div class="spacer"></div>
-  <app-menu-entry [entry]="{title: displayName}" ></app-menu-entry>
+  <app-menu-entry [entry]="{title: user.displayname}" ></app-menu-entry>
   <app-menu-entry [entry]="{title: 'Logout'}" (click)="onLogout()" class="logout" ></app-menu-entry>
 </nav>
