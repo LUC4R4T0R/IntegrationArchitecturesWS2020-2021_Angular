@@ -51,7 +51,7 @@ export class UserManagementTableEntryComponent implements OnInit {
     this.editModalInputs[0].value = this.user.username;
     this.editModalInputs[1].value = this.user.displayname;
     this.editModalInputs[2].value = this.user.employeeId ? this.user.employeeId.toString() : '';
-    this.editModalInputs[3].value = '4';//this.user.group ? this.user.group.toString() : '';
+    this.editModalInputs[3].value = this.user.group ? this.user.group.toString() : '';
   }
 
   deleteMessage(state){
@@ -72,7 +72,7 @@ export class UserManagementTableEntryComponent implements OnInit {
   }
 
   saveUser(user){
-    this.us.updateUser(this.user.username, user.displayname, user.employeeId, user.group).subscribe(res => {
+    this.us.updateUser(this.user.username, user.displayname, parseInt(user.employeeId), parseInt(user.group)).subscribe(res => {
       if(res.status === 200){
         this.changeDisplayEditModal(false);
         this.update.emit();
