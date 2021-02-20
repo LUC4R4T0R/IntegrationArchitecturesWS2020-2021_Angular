@@ -53,7 +53,7 @@ export class UserManagementTableEntryComponent implements OnInit {
 
   deleteUser(){
     this.us.deleteUser(this.user.username).subscribe(res => {
-      if(res === 'success'){
+      if(res.status === 200){
         this.deleteMessage(false);
         this.update.emit();
       }
@@ -65,7 +65,12 @@ export class UserManagementTableEntryComponent implements OnInit {
   }
 
   saveUser(user){
-
+    this.us.updateUser(this.user.username, user.displayname, user.employeeId, user.group).subscribe(res => {
+      if(res.status === 200){
+        this.changeDisplayEditModal(false);
+        this.update.emit();
+      }
+    });
   }
 
   changeDisplayPasswordUpdateModal(state){
@@ -76,7 +81,7 @@ export class UserManagementTableEntryComponent implements OnInit {
     if(data.newPasswordA === data.newPasswordB){
 
     }else{
-      this.changePasswordMessage = 'The new Passwords don\'t match!';
+      this.changePasswordMessage = 'The new passwords don\'t match!';
     }
   }
 }

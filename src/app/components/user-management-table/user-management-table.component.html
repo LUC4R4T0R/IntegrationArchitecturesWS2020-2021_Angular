@@ -5,7 +5,7 @@
     <th>Name</th>
     <th>ID</th>
     <th>Usergroup</th>
-    <th id="plus" >+</th>
+    <th id="plus" (click)="changeDisplayAddModal(true)" >+</th>
   </tr>
   </thead>
   <tbody>
@@ -13,3 +13,4 @@
   </tbody>
   <caption *ngIf="users === undefined || users.length === 0" >No entries were found!</caption>
 </table>
+<app-modal *ngIf="displayAddModal" title="Edit Entry" [formContent]="addModalInputs" [buttons]="{dismiss:'Abort', submit:'Add'}" (displayModal)="changeDisplayAddModal($event)" (output)="addUser($event)" [textualContent]="passwordMessage" ></app-modal>

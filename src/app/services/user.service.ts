@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {User} from "../models/user";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpResponse} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +16,29 @@ export class UserService {
 
   getUsers():Observable<User[]>{
     return this.http.get<User[]>('/api/user');
+  }
+
+  updateUser(username: string, displayname: string, employeeId: number, group: number):Observable<HttpResponse<string>>{
+    return this.http.put('/api/user', {
+      username: username,
+      displayname: displayname,
+      employeeId: employeeId,
+      group: group
+    }, {
+      observe: 'response',
+      responseType: 'text'
+    });
+  }
+
+  deleteUser(username: string):Observable<HttpResponse<string>>{
+    return this.http.delete('/api/user/'+username,{observe: 'response', responseType: 'text'});
+  }
+
+  addUser(user: User):Observable<HttpResponse<string>>{
+    return this.http.post('/api/user',
+      user, {
+      observe: 'response',
+      responseType: 'text'
+    });
   }
 }

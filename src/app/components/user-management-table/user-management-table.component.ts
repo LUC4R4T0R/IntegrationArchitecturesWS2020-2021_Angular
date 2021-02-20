@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {User} from "../../models/user";
 import {UserService} from "../../services/user.service";
+import {ModalInput} from "../../models/modalInput";
 
 @Component({
   selector: 'app-user-management-table',
@@ -9,7 +10,19 @@ import {UserService} from "../../services/user.service";
 })
 export class UserManagementTableComponent implements OnInit {
 
-  @Input() users:User[];
+  users:User[];
+
+  displayAddModal: boolean = false;
+  passwordMessage: string = '';
+
+  addModalInputs:ModalInput[] = [
+    new ModalInput('Username', 'username', 'text'),
+    new ModalInput('Name', 'displayname', 'text'),
+    new ModalInput('Employee ID', 'employeeId', 'number'),
+    new ModalInput('Usergroup', 'group', 'number'),
+    new ModalInput('Password', 'passwordA', 'password'),
+    new ModalInput('Password (Repeated)', 'passwordB', 'password')
+  ];
 
   constructor(private us:UserService) { }
 
@@ -21,5 +34,23 @@ export class UserManagementTableComponent implements OnInit {
     this.us.getUsers().subscribe(users => {
       this.users = users;
     });
+  }
+
+
+  changeDisplayAddModal(state: boolean){
+    this.displayAddModal = state;
+  }
+
+  addUser(data){
+    if(data.passwordA === data.passwordB){
+      this.us.addUser(new User(data.username, data.displayname, data.passwordA, data.group, data.employeeId)).subscribe(res => {
+        if(res.status === 200){
+          this.fetchUsers();
+          this.changeDisplayAddModal(false);
+        }
+      });
+    }else{
+      this.passwordMessage = 'The passwords don\'t match!';
+    }
   }
 }
