@@ -5,6 +5,14 @@ export class ModalInput{
     public type:string,
     public value?:string,
     public placeholder?:string,
-    public disabled?:boolean
+    public disabled?:boolean,
+    public options?:Option[]
+  ) {  }
+}
+
+export class Option{
+  constructor(
+    public title: string,
+    public value?: string
   ) {  }
 }

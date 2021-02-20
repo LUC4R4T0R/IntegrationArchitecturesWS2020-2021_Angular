@@ -5,7 +5,10 @@
       <p *ngIf="textualContent">{{ textualContent }}</p>
       <div *ngFor="let input of formContent">
         <label>{{ input.title }}</label>
-        <input type="{{ input.type }}" value="{{ input.value }}" [(ngModel)]="outputValues[input.name]" [attr.placeholder]="input.placeholder ? input.placeholder : null" [attr.disabled]="input.disabled ? '' : null">
+        <select *ngIf="input.type === 'select'" value="{{ input.value }}">
+          <option *ngFor="let option of input.options" [attr.value]="option.value ? option.value : null">{{option.title}}</option>
+        </select>
+        <input *ngIf="input.type !== 'select'" type="{{ input.type }}" value="{{ input.value }}" [(ngModel)]="outputValues[input.name]" [attr.placeholder]="input.placeholder ? input.placeholder : null" [attr.disabled]="input.disabled ? '' : null">
       </div>
     </div>
     <div class="footer" >
