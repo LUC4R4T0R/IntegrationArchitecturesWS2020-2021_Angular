@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
-import {Salesman} from "../models/salesman";
 import {EvaluationRecord} from "../models/evaluationRecord";
 import {HttpClient, HttpResponse} from "@angular/common/http";
 

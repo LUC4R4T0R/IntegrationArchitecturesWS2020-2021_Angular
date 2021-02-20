@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {SalesmanDetailsComponent} from "../salesman-details/salesman-details.component";
 import {Salesman} from "../../models/salesman";
 
 @Component({

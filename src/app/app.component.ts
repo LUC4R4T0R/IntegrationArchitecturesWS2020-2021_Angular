@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from "./services/auth.service";
 import {UserService} from "./services/user.service";
 import {User} from "./models/user";
@@ -12,7 +12,7 @@ import {User} from "./models/user";
 export class AppComponent {
   title = 'IntegrationArchitecturesWS20202021Angular';
 
-  constructor(private auth:AuthService, private us:UserService) {
+  constructor(public auth:AuthService, private us:UserService) {
   }
 
   user: User = new User(undefined, undefined, undefined);

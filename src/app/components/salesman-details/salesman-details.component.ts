@@ -6,7 +6,6 @@ import {EvaluationRecordService} from "../../services/evaluation-record.service"
 import {EvaluationRecord} from "../../models/evaluationRecord";
 import {EvaluationRecordEntry} from "../../models/evaluationRecordEntry";
 import {ModalInput} from "../../models/modalInput";
-import {FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-salesman-details',

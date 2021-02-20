@@ -39,9 +39,7 @@ export class SettingsComponent implements OnInit {
 
   saveSettings(){
     for(let [name, value] of Object.entries(this.settings)){
-      this.ses.updateSetting(new Setting(name, value)).subscribe(res => {
-
-      });
+      this.ses.updateSetting(new Setting(name, value)).subscribe();
     }
   }
 

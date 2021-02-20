@@ -4,7 +4,6 @@ import { AuthService} from "./services/auth.service";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {UserService} from "./services/user.service";
-import {User} from "./models/user";
 
 @Injectable()
 export class LoginGuard implements CanActivate {
@@ -13,22 +12,26 @@ export class LoginGuard implements CanActivate {
 
   accessPermissions = {
     users: 2,
-    settings: 3,
+    settings: 2,
     overview: 2
   };
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):Observable<boolean> {
-    
+
     return this.auth.isLoggedIn().pipe(map(res =>{
-      if(res) return true;
-      this.router.navigate(['']);
-      return false;
+      if(res){
+          return true;
+      }else{
+        this.router.navigate(['']);
+        return false;
+      }
     }));
   }
 
   hasPermission(route: ActivatedRouteSnapshot):Observable<boolean>{
     return this.us.getUserInfo().pipe(map(user => {
       if(this.accessPermissions[route.routeConfig.path] !== undefined){
+        console.log(this.accessPermissions[route.routeConfig.path]);
         if(this.accessPermissions[route.routeConfig.path] <= user.group) return true;
       }
       return false;

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from "@angular/router";
 import { OverviewComponent } from "./components/overview/overview.component";
@@ -9,6 +9,7 @@ import {SalesmanDetailsComponent} from "./components/salesman-details/salesman-d
 import {NotFoundComponent} from "./components/not-found/not-found.component";
 import {BonusComponent} from "./components/bonus/bonus.component";
 import {UserManagementComponent} from "./components/user-management/user-management.component";
+
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
