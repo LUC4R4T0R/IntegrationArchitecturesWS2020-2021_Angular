@@ -16,15 +16,17 @@
   <div id="bottom">
     <div id="remarks">
       <h3>Remarks</h3>
-      <textarea [(ngModel)]="remarks" ></textarea>
+      <textarea *ngIf="user.group === 3" [(ngModel)]="remarks" ></textarea>
+      <p *ngIf="user.employeeId === salesman.id || user.group >= 2">{{remarks}}</p>
     </div>
     <div id="total">
       <h3>Total Bonus</h3>
       <span>{{ moneyFormatter(sum) }}</span>
     </div>
     <div id="controls">
-      <button (click)="saveRemarks()" >Save Remarks</button>
-      <button>Reload Orders</button>
+      <button (click)="saveRemarks()" *ngIf="user.group === 3">Save Remarks</button>
+      <button *ngIf="user.group >= 2 && user.group <= 3">Reload Orders</button>
+      <button>Approve Bonus</button>
     </div>
   </div>
 </div>

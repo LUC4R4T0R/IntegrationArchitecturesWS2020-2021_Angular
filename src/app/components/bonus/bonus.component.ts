@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {SalesmanService} from "../../services/salesman.service";
 import {EvaluationRecordService} from "../../services/evaluation-record.service";
@@ -8,6 +8,8 @@ import {EvaluationRecordEntry} from "../../models/evaluationRecordEntry";
 import {BonusService} from "../../services/bonus.service";
 import {Product} from "../../models/product";
 import {moneyFormatter} from "../../lib/formatting";
+import {User} from "../../models/user";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-bonus',
@@ -16,7 +18,7 @@ import {moneyFormatter} from "../../lib/formatting";
 })
 export class BonusComponent implements OnInit {
   id: number;
-  salesman: Salesman;
+  salesman: Salesman = new Salesman(undefined, undefined, undefined);
   records: EvaluationRecord[];
   currentYear: number;
   currentRecord: EvaluationRecordEntry[];
@@ -24,8 +26,9 @@ export class BonusComponent implements OnInit {
   remarks:string = '';
   sales:Product[] = [];
   moneyFormatter = moneyFormatter;
+  user: User = new User('', '', undefined);
 
-  constructor(private route:ActivatedRoute, private sm:SalesmanService, private ev:EvaluationRecordService, private bo:BonusService) { }
+  constructor(private route:ActivatedRoute, private sm:SalesmanService, private ev:EvaluationRecordService, private bo:BonusService, private us: UserService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -46,12 +49,22 @@ export class BonusComponent implements OnInit {
     });
   }
 
+  loadUser(){
+    this.us.getUserInfo().subscribe(user => {
+      this.user = user;
+    });
+  }
+
   async loadEvaluation(){
     return new Promise((res, rej) => {
       this.bo.fetchOrderEvaluation(this.id, this.currentYear).subscribe(orderEv => {
-        this.sales = orderEv.products;
-        this.remarks = orderEv.remarks;
-        res();
+        if(orderEv.status === 200){
+          this.sales = orderEv.body.products;
+          this.remarks = orderEv.body.remarks;
+          res();
+        }else{
+         rej();
+        }
       });
     });
   }
@@ -85,6 +98,6 @@ export class BonusComponent implements OnInit {
   }
 
   saveRemarks(){
-    console.log(this.remarks);
+    this.bo.saveRemarks(this.id, this.currentYear, this.remarks).subscribe();
   }
 }

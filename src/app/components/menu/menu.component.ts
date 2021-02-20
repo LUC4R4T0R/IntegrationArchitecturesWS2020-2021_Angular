@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { AuthService } from "../../services/auth.service";
 import { MenuEntry } from "../../models/menu-entry";
 import { Router } from "@angular/router";
@@ -24,15 +24,11 @@ export class MenuComponent implements OnInit {
 
   constructor(private auth:AuthService, private us:UserService, private router:Router) { }
 
-  displayName:string;
-  user: User = new User('', '', undefined);
+  @Input() user: User;
 
   ngOnInit(): void {
-    this.us.getUserInfo().subscribe(user =>{
-      this.user = user;
-      this.entries[1].path = '../salesman/'+user.employeeId+'/bonus';
-      this.entries[2].path = '../salesman/'+user.employeeId+'/bonus';
-    });
+    this.entries[1].path = '../salesman/'+this.user.employeeId+'/bonus';
+    this.entries[2].path = '../salesman/'+this.user.employeeId+'/bonus';
   }
 
   onLogout(){

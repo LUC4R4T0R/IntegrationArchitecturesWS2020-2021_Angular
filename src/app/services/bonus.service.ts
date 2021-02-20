@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import {HttpClient, HttpResponse} from "@angular/common/http";
 import {OrderEvaluation} from "../models/order-evaluation";
 import {Observable} from "rxjs";
 
@@ -10,7 +10,11 @@ export class BonusService {
 
   constructor(private http:HttpClient) { }
 
-  fetchOrderEvaluation(smId:number, year:number):Observable<OrderEvaluation>{
-    return this.http.get<OrderEvaluation>('/api/salesman/' + smId + '/bonus/' + year + '/get_review');
+  fetchOrderEvaluation(smId:number, year:number):Observable<HttpResponse<OrderEvaluation>>{
+    return this.http.get<OrderEvaluation>('/api/salesman/' + smId + '/bonus/' + year + '/get_review', {observe: 'response'});
+  }
+
+  saveRemarks(smId:number, year:number, remarks:string):Observable<HttpResponse<string>>{
+    return this.http.post('/api/salesman/'+smId+'/bonus/'+year+'/set_remarks', {remarks: remarks}, {observe: 'response', responseType: "text"});
   }
 }
