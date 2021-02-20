@@ -5,3 +5,44 @@ input{
   width: unset;
   margin: 5px;
 }
+
+ul.evRecordNames{
+  list-style-type: none;
+  margin: 8px 0;
+  padding: 0;
+  border-top: 1px solid gray;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+  border-radius: 5px;
+}
+
+ul.evRecordNames>li{
+  margin: 0;
+  padding: 6px;
+  border: 1px solid transparent;
+  border-bottom: 1px solid gray;
+  color: var(--text-color);
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+}
+
+ul.evRecordNames>li:hover{
+  border: 1px solid red;
+  color: lightgrey;
+
+}
+
+ul.evRecordNames>li:hover::before{
+  content: '×';
+  color: red;
+  position: absolute;
+  transform: translate(-50%, 0);
+  left: 50%;
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 34px;
+  font-weight: normal;
+  line-height: 0.6;
+}

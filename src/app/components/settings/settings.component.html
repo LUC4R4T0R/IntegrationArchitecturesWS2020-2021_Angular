@@ -3,70 +3,75 @@
   <h2>Record Management</h2>
   <div class="row">
     <div class="col">
-      <ul>
+      <label>Evaluation Record Entry Names</label>
+      <ul class="evRecordNames">
         <li *ngFor="let name of settings.evaluationRecordEntryNames" (click)="removeEntryName(name)">{{ name }}</li>
       </ul>
     </div>
     <div class="col">
-      <input type="text" [(ngModel)]="newEntryName">
-      <button (click)="addEntryName()" >Add</button>
+      <label for="new-name">New Name</label>
+      <input type="text" id="new-name" [(ngModel)]="newEntryName">
+      <button style="float: right" (click)="addEntryName()" >Add</button>
     </div>
   </div>
   <h2>Bonus Calculation</h2>
-  <h3>Social Evaluation</h3>
+
     <div class="row">
       <div class="col">
-        <label for="social-base-bonus">Base Bonus</label>
-        <input id="social-base-bonus" type="number" step="0.01" [(ngModel)]="settings.socialBonusBase">
-      </div>
-      <div class="col">
-        <label for="social-bonus-factor">Bonus Factor</label>
-        <input id="social-bonus-factor" type="number" step="0.01" [(ngModel)]="settings.socialBonusFactor">
-      </div>
-      <div class="col">
-        Example<br>
-        <br>
-        Expected: 10 Actual: 8<br>
-        <br>
-        8 / 10 &times; <span>{{settings.socialBonusFactor}}</span> + <span>{{settings.socialBonusBase}}</span> = <span>{{ 8 / 10 * settings.socialBonusFactor + settings.socialBonusBase }}</span>
+        <h3>Social Evaluation</h3>
+        <div class="row">
+          <div class="col" style="max-width: 200px;">
+            <label for="social-base-bonus">Base Bonus</label>
+            <input id="social-base-bonus" type="number" step="0.01" [(ngModel)]="settings.socialBonusBase">
+            <label for="social-bonus-factor">Bonus Factor</label>
+            <input id="social-bonus-factor" type="number" step="0.01" [(ngModel)]="settings.socialBonusFactor">
+          </div>
+          <div class="col">
+            Example<br>
+            <br>
+            Expected: 10 Actual: 8<br>
+            <br>
+            8 / 10 &times; <span>{{settings.socialBonusFactor}}</span> + <span>{{settings.socialBonusBase}}</span> = <span>{{ 8 / 10 * settings.socialBonusFactor + settings.socialBonusBase }}</span>
+          </div>
       </div>
     </div>
-  <h3>Sales Evaluation</h3>
-  <div class="row">
     <div class="col">
-      <label for="social-base-bonus">Base Bonus</label>
-      <input id="sales-base-bonus" type="number" step="0.01" [(ngModel)]="settings.salesBonusBase">
-    </div>
-    <div class="col">
-      <label for="social-bonus-factor" >Bonus Factor</label>
-      <input id="sales-bonus-factor" type="number" step="0.01" [(ngModel)]="settings.salesBonusFactor">
-    </div>
-    <div class="col">
-      <table class="unformatted">
-        <thead></thead>
-        <tbody>
-        <tr>
-          <td><label for="rating-factor-1">excellent (A / hot)</label></td>
-          <td><input class="rating-factor" id="rating-factor-1" type="number" step="0.01" [(ngModel)]="settings.customerRatingFactor1"></td>
-        </tr>
-        <tr>
-          <td><label for="rating-factor-2">very good (B / warm)</label></td>
-          <td><input class="rating-factor" id="rating-factor-2" type="number" step="0.01" [(ngModel)]="settings.customerRatingFactor2"></td>
-        </tr>
-        <tr>
-          <td><label for="rating-factor-3">good (C / neutral)</label></td>
-          <td><input class="rating-factor" id="rating-factor-3" type="number" step="0.01" [(ngModel)]="settings.customerRatingFactor3"></td>
-        </tr>
-        <tr>
-          <td><label for="rating-factor-4">mediocre (D / cold)</label></td>
-          <td><input class="rating-factor" id="rating-factor-4" type="number" step="0.01" [(ngModel)]="settings.customerRatingFactor4"></td>
-        </tr>
-        <tr>
-          <td><label for="rating-factor-5">bad (E / avoid)</label></td>
-          <td><input class="rating-factor" id="rating-factor-5" type="number" step="0.01" [(ngModel)]="settings.customerRatingFactor5"></td>
-        </tr>
-        </tbody>
-      </table>
+      <h3>Sales Evaluation</h3>
+      <div class="row">
+        <div class="col" style="max-width: 200px;">
+          <label for="social-base-bonus">Base Bonus</label>
+          <input id="sales-base-bonus" type="number" step="0.01" [(ngModel)]="settings.salesBonusBase">
+          <label for="social-bonus-factor" >Bonus Factor</label>
+          <input id="sales-bonus-factor" type="number" step="0.01" [(ngModel)]="settings.salesBonusFactor">
+        </div>
+        <div class="col">
+          <table class="unformatted">
+            <thead></thead>
+            <tbody>
+            <tr>
+              <td><label for="rating-factor-1">excellent (A / hot)</label></td>
+              <td><input class="rating-factor" id="rating-factor-1" type="number" step="0.01" [(ngModel)]="settings.customerRatingFactor1"></td>
+            </tr>
+            <tr>
+              <td><label for="rating-factor-2">very good (B / warm)</label></td>
+              <td><input class="rating-factor" id="rating-factor-2" type="number" step="0.01" [(ngModel)]="settings.customerRatingFactor2"></td>
+            </tr>
+            <tr>
+              <td><label for="rating-factor-3">good (C / neutral)</label></td>
+              <td><input class="rating-factor" id="rating-factor-3" type="number" step="0.01" [(ngModel)]="settings.customerRatingFactor3"></td>
+            </tr>
+            <tr>
+              <td><label for="rating-factor-4">mediocre (D / cold)</label></td>
+              <td><input class="rating-factor" id="rating-factor-4" type="number" step="0.01" [(ngModel)]="settings.customerRatingFactor4"></td>
+            </tr>
+            <tr>
+              <td><label for="rating-factor-5">bad (E / avoid)</label></td>
+              <td><input class="rating-factor" id="rating-factor-5" type="number" step="0.01" [(ngModel)]="settings.customerRatingFactor5"></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
   <button style="float: right" (click)="saveSettings()">Save</button><button (click)="loadSettings()"  style="float: right; margin-right: 10px">Reset</button>

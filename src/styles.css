@@ -94,3 +94,7 @@ table:not(.unformatted) td{
   justify-content: space-around;
   flex-wrap: wrap;
 }
+
+.col{
+  margin: 0 20px;
+}
