@@ -1,0 +1,7 @@
+input{
+  width: 100%;
+}
+.rating-factor{
+  width: unset;
+  margin: 5px;
+}
