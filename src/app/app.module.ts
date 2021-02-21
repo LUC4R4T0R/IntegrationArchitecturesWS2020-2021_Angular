@@ -24,6 +24,7 @@ import { SalesTableEntryComponent } from './components/sales-table-entry/sales-t
 import { UserManagementComponent } from './components/user-management/user-management.component';
 import { UserManagementTableComponent } from './components/user-management-table/user-management-table.component';
 import { UserManagementTableEntryComponent } from './components/user-management-table-entry/user-management-table-entry.component';
+import { AccountPermissionMessageComponent } from './components/account-permission-message/account-permission-message.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { UserManagementTableEntryComponent } from './components/user-management-
     SalesTableEntryComponent,
     UserManagementComponent,
     UserManagementTableComponent,
-    UserManagementTableEntryComponent
+    UserManagementTableEntryComponent,
+    AccountPermissionMessageComponent
   ],
   imports: [
     BrowserModule,
