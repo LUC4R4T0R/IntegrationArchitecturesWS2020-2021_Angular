@@ -11,6 +11,14 @@
     </thead>
     <tbody>
     <tr app-evaluation-record-table-entry *ngFor="let entry of entries" [displayBonus]="displayBonus" [editable]="editable" [entry]="entry" [smId]="smId" [year]="year" (update)="reloadEntries()"></tr>
+    <tr *ngIf="displayBonus">
+      <td></td>
+      <td></td>
+      <td style="text-align: right" >Total:</td>
+      <td>
+        {{ moneyFormatter(bonus) }}
+      </td>
+    </tr>
     </tbody>
     <caption *ngIf="entries === undefined || entries === null || entries.length === 0" >No entries were found!</caption>
   </table>

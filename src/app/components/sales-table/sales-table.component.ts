@@ -24,6 +24,7 @@ export class SalesTableComponent implements OnInit, OnChanges {
   }
 
   calcBonus(){
+    this.bonus = 0;
     for(let sale of this.sales){
       if(sale.bonus !== undefined && typeof sale.bonus === "number"){
         this.bonus += sale.bonus;

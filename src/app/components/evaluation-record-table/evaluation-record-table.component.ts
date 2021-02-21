@@ -1,8 +1,9 @@
-import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, Input, OnInit, OnChanges, Output, EventEmitter} from '@angular/core';
 import { EvaluationRecordEntry } from "../../models/evaluationRecordEntry";
 import {ModalInput, Option} from "../../models/modalInput";
 import { EvaluationRecordEntryService } from "../../services/evaluation-record-entry.service";
 import {SettingsService} from "../../services/settings.service";
+import {moneyFormatter} from "../../lib/formatting";
 
 @Component({
   selector: 'app-evaluation-record-table',
@@ -16,8 +17,10 @@ export class EvaluationRecordTableComponent implements OnInit {
   @Input() editable:boolean = false;
   @Input() entries:EvaluationRecordEntry[];
   @Output() update = new EventEmitter();
+  bonus:number = 0;
   displayEntryModal:boolean = false;
   nameOptions: Option[] = [];
+  moneyFormatter = moneyFormatter;
   entryModalInputs:ModalInput[] = [
     new ModalInput('Name', 'name', 'select', undefined, undefined, false, this.nameOptions),
     new ModalInput('Target Value', 'target', 'number'),
@@ -56,5 +59,22 @@ export class EvaluationRecordTableComponent implements OnInit {
 
   reloadEntries(){
     this.update.emit();
+  }
+
+  ngOnChanges(changes){
+    if(changes.entries !== undefined){
+      this.calcBonus();
+    }
+  }
+
+  calcBonus(){
+    if(this.entries !== undefined){
+      this.bonus = 0;
+      for(let entry of this.entries){
+        if(entry.bonus !== undefined && typeof entry.bonus === "number"){
+          this.bonus += entry.bonus;
+        }
+      }
+    }
   }
 }
