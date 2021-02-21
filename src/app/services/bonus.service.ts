@@ -17,4 +17,16 @@ export class BonusService {
   saveRemarks(smId:number, year:number, remarks:string):Observable<HttpResponse<string>>{
     return this.http.post('/api/salesman/'+smId+'/bonus/'+year+'/set_remarks', {remarks: remarks}, {observe: 'response', responseType: "text"});
   }
+
+  approveBonus(smId:number, year:number):Observable<HttpResponse<string>>{
+    return this.http.post('/api/salesman/'+smId+'/bonus/'+year+'/approve_bonus', {}, {observe: 'response', responseType: 'text'});
+  }
+
+  refreshBonus(smId:number, year:number):Observable<HttpResponse<OrderEvaluation>>{
+    return this.http.get<OrderEvaluation>('/api/salesman/'+smId+'/bonus/'+year+'/refresh_review', {observe:'response'});
+  }
+
+  getYears(smId:number):Observable<HttpResponse<number[]>>{
+    return this.http.get<number[]>('/api/salesman/'+smId+'/bonus/get_years', {observe: 'response'});
+  }
 }

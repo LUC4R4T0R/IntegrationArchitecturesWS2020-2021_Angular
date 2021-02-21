@@ -2,7 +2,7 @@
   <div>
     <h2 *ngIf="salesman" id="salesman">{{ salesman.id }}: {{ salesman.firstname }} {{ salesman.lastname }}</h2>
     <select id="yearSelector" [(ngModel)]="currentYear" (change)="selectYear()">
-      <option *ngFor="let record of this.records" >{{record.year}}</option>
+      <option *ngFor="let year of this.years" >{{year}}</option>
     </select>
   </div>
   <div class="table">
@@ -11,22 +11,29 @@
   </div>
   <div class="table">
     <h3>Performance Evaluation</h3>
-    <app-evaluation-record-table [entries]="currentRecord" [smId]="id" [displayBonus]="true" [year]="currentYear" (update)="loadRecords()"></app-evaluation-record-table>
+    <app-evaluation-record-table [entries]="currentRecord" [smId]="id" [displayBonus]="true" [year]="currentYear" (update)="loadEvaluation()"></app-evaluation-record-table>
   </div>
   <div id="bottom">
     <div id="remarks">
       <h3>Remarks</h3>
       <textarea *ngIf="user.group === 3" [(ngModel)]="remarks" ></textarea>
-      <p *ngIf="user.employeeId === salesman.id || user.group >= 2">{{remarks}}</p>
+      <p *ngIf="user.group !== 3 && (user.employeeId === salesman.id || user.group >= 2)">{{remarks}}</p>
     </div>
     <div id="total">
       <h3>Total Bonus</h3>
-      <span>{{ moneyFormatter(sum) }}</span>
+      <span>{{ moneyFormatter(sum) }}</span><br>
+      <h3 *ngIf="hrApproved || managementApproved || salesmanApproved">Approved by</h3>
+      <span>
+        <ng-container *ngIf="managementApproved">Management</ng-container>
+        <ng-container *ngIf="managementApproved && hrApproved">, </ng-container>
+        <ng-container *ngIf="hrApproved">Human Resources</ng-container>
+        <ng-container *ngIf="salesmanApproved">, Salesman</ng-container>
+      </span>
     </div>
     <div id="controls">
       <button (click)="saveRemarks()" *ngIf="user.group === 3">Save Remarks</button>
-      <button *ngIf="user.group >= 2 && user.group <= 3">Reload Orders</button>
-      <button>Approve Bonus</button>
+      <button *ngIf="user.group >= 2 && user.group <= 3" (click)="refreshBonus()">Reload Review</button>
+      <button (click)="approveBonus()" *ngIf="user.group >= 1 && user.group <= 3">Approve Bonus</button>
     </div>
   </div>
 </div>

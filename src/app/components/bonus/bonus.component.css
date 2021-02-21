@@ -38,6 +38,7 @@
 #total>span{
   font-size: 22px;
   margin-left: 10px;
+  display: inline-block;
 }
 
 #controls>button{
