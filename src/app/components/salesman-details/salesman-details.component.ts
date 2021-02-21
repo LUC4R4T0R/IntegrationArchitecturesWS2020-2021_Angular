@@ -44,9 +44,9 @@ export class SalesmanDetailsComponent implements OnInit {
   async loadRecords(){
     return new Promise((res, rej) => {
       this.ev.getAllRecords(this.id).subscribe( result => {
-        if(result === undefined) rej();
-        this.records = result;
-        if(result[0]) this.currentRecord = result[0].entries;
+        if(result.status !== 200) rej();
+        this.records = result.body;
+        if(this.records[0]) this.currentRecord = this.records[0].entries;
         res();
       });
     });

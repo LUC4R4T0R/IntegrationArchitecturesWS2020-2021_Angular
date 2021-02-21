@@ -10,8 +10,8 @@ export class EvaluationRecordService {
 
   constructor(private http:HttpClient) { }
 
-  getAllRecords(id:number):Observable<EvaluationRecord[]>{
-    return this.http.get<EvaluationRecord[]>('/api/salesman/' + id + '/evaluationrecord');
+  getAllRecords(id:number):Observable<HttpResponse<EvaluationRecord[]>>{
+    return this.http.get<EvaluationRecord[]>('/api/salesman/' + id + '/evaluationrecord', {observe: 'response'});
   }
 
   getRecord(id:number, year:number):Observable<EvaluationRecord[]>{
