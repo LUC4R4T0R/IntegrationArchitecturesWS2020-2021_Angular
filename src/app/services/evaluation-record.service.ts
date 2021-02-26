@@ -14,8 +14,8 @@ export class EvaluationRecordService {
     return this.http.get<EvaluationRecord[]>('/api/salesman/' + id + '/evaluationrecord', {observe: 'response'});
   }
 
-  getRecord(id:number, year:number):Observable<EvaluationRecord[]>{
-    return this.http.get<EvaluationRecord[]>('/api/salesman/' + id + '/evaluationrecord/' + year);
+  deleteRecord(id:number, year:number):Observable<HttpResponse<String>>{
+    return this.http.delete('/api/salesman/' + id + '/evaluationrecord/' + year, {observe: 'response', responseType: 'text'});
   }
 
   addRecord(id:number, record:EvaluationRecord):Observable<HttpResponse<string>>{

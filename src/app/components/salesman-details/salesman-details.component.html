@@ -2,12 +2,14 @@
   <div>
     <h2 *ngIf="salesman" id="salesman">{{ salesman.id }}: {{ salesman.firstname }} {{ salesman.lastname }}</h2>
     <select id="yearSelector" [(ngModel)]="currentYear" (change)="selectYear()">
-      <option *ngFor="let record of this.records" >{{record.year}}</option>
+      <option *ngFor="let year of this.yearOptions" >{{year}}</option>
     </select>
+    <a id="deleteRecordLink" (click)="deleteMessage(true)" >×</a>
     <a id="addRecordLink" (click)="displayAddERModal(true)" >+</a>
   </div>
   <div>
-    <app-evaluation-record-table [entries]="currentRecord" [editable]="true" [smId]="id" [year]="currentYear" (update)="loadRecords()"></app-evaluation-record-table>
+    <app-evaluation-record-table [entries]="currentRecord ? currentRecord : undefined" [editable]="true" [smId]="id" [year]="currentYear" (update)="reload(currentYear)"></app-evaluation-record-table>
   </div>
   <app-modal *ngIf="displayERModal" title="Add Evaluation Record" [formContent]="addERInputs" [buttons]="{dismiss:'Abort', submit:'Add'}" (displayModal)="displayAddERModal($event)"  (output)="addER($event)" ></app-modal>
+  <app-modal *ngIf="displayDeleteModal" [title]="'Deleting Record: ' + this.currentYear" (displayModal)="deleteMessage($event)" textualContent="Do you really want to delete this Record?" [buttons]="{dismiss:'Abort', submit:'Delete'}" (output)="deleteRecord()"></app-modal>
 </div>

@@ -15,7 +15,7 @@ export class EvaluationRecordTableComponent implements OnInit {
   @Input() year:number;
   @Input() displayBonus:boolean = false;
   @Input() editable:boolean = false;
-  @Input() entries:EvaluationRecordEntry[];
+  @Input() entries:EvaluationRecordEntry[] = [];
   @Output() update = new EventEmitter();
   bonus:number = 0;
   displayEntryModal:boolean = false;

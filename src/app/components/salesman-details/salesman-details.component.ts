@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Salesman} from "../../models/salesman";
 import {SalesmanService} from "../../services/salesman.service";
@@ -17,7 +17,9 @@ export class SalesmanDetailsComponent implements OnInit {
   salesman:Salesman;
   records:EvaluationRecord[];
   currentRecord:EvaluationRecordEntry[];
+  yearOptions:number[];
   currentYear:number;
+  displayDeleteModal:boolean=false;
   addERInputs:ModalInput[] = [
     new ModalInput('Year', 'year', 'number', (new Date).getFullYear().toString())
   ];
@@ -30,7 +32,7 @@ export class SalesmanDetailsComponent implements OnInit {
       this.id = params['id'];
       this.loadSalesman();
       this.loadRecords().then(_=>{
-        this.currentYear = Math.min(...this.records.map(rec => rec.year));
+        this.loadYears();
       });
     });
   }
@@ -52,26 +54,58 @@ export class SalesmanDetailsComponent implements OnInit {
     });
   }
 
+  deleteMessage(state){
+    this.displayDeleteModal = state;
+  }
+
   selectYear(year:number = this.currentYear){
     this.currentRecord = this.records.filter(x => x.year == year)[0].entries;
+    this.currentYear = year;
+  }
+
+  loadYears(){
+    this.yearOptions = this.records.map(rec => rec.year);
+    this.currentYear = Math.min(...this.records.map(rec => rec.year));
   }
 
   displayAddERModal(event:boolean){
     this.displayERModal = event;
   }
 
-  addER(data){
-    this.ev.addRecord(this.id, new EvaluationRecord(parseInt(data.year), [])).subscribe(res => {
+  deleteRecord(){
+    this.ev.deleteRecord(this.id, this.currentYear).subscribe(res => {
       if(res.status === 200){
-          this.displayAddERModal(false);
-          this.reload(data.year);
+        this.yearOptions.unshift(this.currentYear)
+        let year = this.yearOptions[0];
+        console.log(year);
+        this.reloadAll(year);
+        this.deleteMessage(false);
       }
     });
   }
 
-  reload(year){
-    this.loadRecords().then(()=>{
+  addER(data){
+    this.ev.addRecord(this.id, new EvaluationRecord(parseInt(data.year), [])).subscribe(res => {
+      if(res.status === 200){
+          this.displayAddERModal(false);
+          this.reloadAll(data.year);
+      }
+    });
+  }
+
+  async reload(year){
+    await this.loadRecords().then(()=>{
       this.selectYear(year);
+    });
+  }
+
+  async reloadAll(year){
+    await this.loadRecords()
+      .then(()=>{
+        this.loadYears();
+      })
+      .then(()=>{
+        this.selectYear(year);
     });
   }
 }
