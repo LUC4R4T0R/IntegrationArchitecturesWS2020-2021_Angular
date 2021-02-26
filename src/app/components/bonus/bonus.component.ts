@@ -44,8 +44,7 @@ export class BonusComponent implements OnInit {
         .then(_=>{
           this.currentYear = Math.min(...this.years);
           return this.loadEvaluation();
-         })
-        .then(_ => this.calculateSum());
+         });
     });
   }
 
@@ -61,11 +60,12 @@ export class BonusComponent implements OnInit {
     });
   }
 
-  async loadEvaluation(){
+  async loadEvaluation(year: number = this.currentYear){
     return new Promise((res, rej) => {
-      this.bo.fetchOrderEvaluation(this.id, this.currentYear).subscribe(orderEv => {
+      this.bo.fetchOrderEvaluation(this.id, year).subscribe(orderEv => {
         if(orderEv.status === 200){
           this.setEvaluation(orderEv.body);
+          this.calculateSum();
           res();
         }else{
           rej();
@@ -81,12 +81,6 @@ export class BonusComponent implements OnInit {
     this.managementApproved = orderEv.managementApproved;
     this.hrApproved = orderEv.hrApproved;
     this.salesmanApproved = orderEv.salesmanApproved;
-  }
-
-  selectYear(year:number = this.currentYear){
-    this.currentRecord = this.records.filter(x => x.year == year)[0].entries;
-    this.loadEvaluation()
-      .then(_ => this.calculateSum());
   }
 
   calculateSum(){

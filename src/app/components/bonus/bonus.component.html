@@ -1,7 +1,7 @@
 <div class="main-container">
   <div>
     <h2 *ngIf="salesman" id="salesman">{{ salesman.id }}: {{ salesman.firstname }} {{ salesman.lastname }}</h2>
-    <select id="yearSelector" [(ngModel)]="currentYear" (change)="selectYear()">
+    <select id="yearSelector" [(ngModel)]="currentYear" (change)="loadEvaluation(currentYear)">
       <option *ngFor="let year of this.years" >{{year}}</option>
     </select>
   </div>

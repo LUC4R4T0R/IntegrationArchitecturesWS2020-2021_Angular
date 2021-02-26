@@ -24,11 +24,18 @@ export class MenuComponent implements OnInit {
 
   constructor(private auth:AuthService, private us:UserService, private router:Router) { }
 
-  @Input() user: User;
+  user: User = new User("", "", "", 0);
 
   ngOnInit(): void {
+    this.loadUser();
     this.entries[1].path = '../salesman/'+this.user.employeeId+'/bonus';
     this.entries[2].path = '../salesman/'+this.user.employeeId+'/bonus';
+  }
+
+  loadUser(){
+    this.us.getUserInfo().subscribe(user => {
+      this.user = user;
+    });
   }
 
   onLogout(){

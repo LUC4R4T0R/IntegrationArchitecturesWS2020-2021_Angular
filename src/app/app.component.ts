@@ -12,14 +12,10 @@ import {User} from "./models/user";
 export class AppComponent {
   title = 'IntegrationArchitecturesWS20202021Angular';
 
-  constructor(public auth:AuthService, private us:UserService) {
+  constructor(public auth:AuthService) {
   }
 
-  user: User = new User(undefined, undefined, undefined);
-
   ngOnInit(){
-    this.us.getUserInfo().subscribe(user => {
-      this.user = user;
-    });
+
   }
 }
