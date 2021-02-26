@@ -30,6 +30,10 @@ export class UserService {
     });
   }
 
+  updatePassword(username:string, oldPassword:string, newPassword:string):Observable<HttpResponse<string>>{
+    return this.http.put('/api/user/'+username+'/pw', {oldPw: oldPassword, newPw: newPassword}, {observe:'response', responseType: 'text'});
+  }
+
   deleteUser(username: string):Observable<HttpResponse<string>>{
     return this.http.delete('/api/user/'+username,{observe: 'response', responseType: 'text'});
   }

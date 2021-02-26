@@ -2,6 +2,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {User} from "../../models/user";
 import {ModalInput, Option} from "../../models/modalInput";
 import {UserService} from "../../services/user.service";
+import {AuthService} from "../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: '[app-user-management-table-entry]',
@@ -45,7 +47,7 @@ export class UserManagementTableEntryComponent implements OnInit {
     'Admin'
   ];
 
-  constructor(private us: UserService) { }
+  constructor(private us: UserService, private auth: AuthService, private router:Router) { }
 
   ngOnInit(): void {
     this.editModalInputs[0].value = this.user.username;
@@ -86,7 +88,16 @@ export class UserManagementTableEntryComponent implements OnInit {
 
   updatePassword(data){
     if(data.newPasswordA === data.newPasswordB){
-
+      this.us.updatePassword(this.user.username, data.oldPassword, data.newPasswordA).subscribe(res => {
+        if(res.status === 200){
+          this.changeDisplayPasswordUpdateModal(false);
+          this.auth.logout().subscribe(res => {
+            if(res.status === 200){
+              this.router.navigate(['']);
+            }
+          });
+        }
+      });
     }else{
       this.changePasswordMessage = 'The new passwords don\'t match!';
     }
