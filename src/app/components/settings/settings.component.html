@@ -29,7 +29,7 @@
           <div class="col">
             Example<br>
             <br>
-            Expected: 10 Actual: 8<br>
+            Expected: 10<br>Actual: 8<br>
             <br>
             8 / 10 &times; <span>{{settings.socialBonusFactor}}</span> + <span>{{settings.socialBonusBase}}</span> = <span>{{ 8 / 10 * settings.socialBonusFactor + settings.socialBonusBase }}</span>
           </div>
@@ -70,6 +70,13 @@
             </tr>
             </tbody>
           </table>
+        </div>
+        <div class="col">
+          Example<br>
+          <br>
+          Rating: B<br>Number of Products: 10<br>Product Price: 200€<br>
+          <br>
+          <span>{{settings.customerRatingFactor2}}</span> &times; 10 &times; 200 &times; <span>{{settings.salesBonusFactor}}</span> + <span>{{settings.salesBonusBase}}</span> = <span>{{ settings.customerRatingFactor2 * 10 * 200 * settings.salesBonusFactor + settings.salesBonusBase }}</span>
         </div>
       </div>
     </div>
