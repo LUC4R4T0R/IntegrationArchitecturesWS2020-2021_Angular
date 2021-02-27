@@ -13,8 +13,8 @@ export class AuthService {
 
   constructor(private http:HttpClient) { }
 
-  login(credentials:Credentials):Observable<any>{
-    return this.http.post(this.loginPath, credentials, {responseType: 'text'});
+  login(credentials:Credentials):Observable<HttpResponse<string>>{
+    return this.http.post(this.loginPath, credentials, {observe: 'response', responseType: 'text'});
   }
 
   logout():Observable<HttpResponse<any>>{

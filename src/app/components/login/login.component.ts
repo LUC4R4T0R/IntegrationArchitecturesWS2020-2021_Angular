@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   onLogin(){
     this.auth.login(this.model).subscribe(async res =>{
-      if(res === 'success'){
+      if(res.status === 200){
         await this.loadUser();
         if(this.user.group >= 2)
           this.router.navigate(['overview']);
