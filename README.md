@@ -9,6 +9,8 @@ Das Backend ist mit OrangeHRM und OpenCRX integriert.
 Die Frontend die diese Anwendung bereitstellt, ist für die Nutzung der passenden [API](https://github.com/LUC4R4T0R/integrationarchitecturesws2020-2021_node.js)
 ausgelegt.
 
+Nach dem Start der beider Anwendungen gibt es standartmäßig einen user mit username admin und password admin.
+
 ## Installation
 
 Diese Anwendung wird in Node.js betrieben. Für die Verbindung zum Backend muss 
