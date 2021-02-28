@@ -5,7 +5,7 @@ export function moneyFormatter(cents: number): string{
 }
 
 export function pad(num:number, size:number): string {
-  let str = num.toString();
+  let str = num.toFixed();
   while (str.length < size) str = '0' + str;
   return str;
 }

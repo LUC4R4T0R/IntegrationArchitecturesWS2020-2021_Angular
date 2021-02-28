@@ -2,6 +2,7 @@ import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import { EvaluationRecordEntry } from "../../models/evaluationRecordEntry";
 import { EvaluationRecordEntryService } from "../../services/evaluation-record-entry.service";
 import {ModalInput} from "../../models/modalInput";
+import {moneyFormatter} from "../../lib/formatting";
 
 @Component({
   selector: '[app-evaluation-record-table-entry]',
@@ -16,6 +17,7 @@ export class EvaluationRecordTableEntryComponent implements OnInit {
   @Input() editable:boolean = false;
   @Output() update = new EventEmitter();
   displayDeleteModal:boolean;
+  moneyFormatter = moneyFormatter;
   modalButtons = {
     submit:'Delete',
     dismiss:'Abort'

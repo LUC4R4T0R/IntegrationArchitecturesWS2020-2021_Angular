@@ -1,7 +1,7 @@
 <td>{{ entry.name }}</td>
 <td>{{ entry.target }}</td>
 <td>{{ entry.actual }}</td>
-<td *ngIf="displayBonus ">{{ entry.bonus ? entry.bonus.toString().slice(0,entry.bonus.toString().length - 2) + ',' + entry.bonus.toString().slice(entry.bonus.toString().length - 2) + ' €' : '' }}</td>
+<td *ngIf="displayBonus ">{{ entry.bonus ? moneyFormatter(entry.bonus) : '' }}</td>
 <td class="control" *ngIf="editable">
   <a class="editButton" (click)="changeDisplayEditModal(true)" >&#9998;</a>
   <a class="deleteButton" (click)="deleteMessage(true)" >&times;</a>
