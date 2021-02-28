@@ -111,6 +111,7 @@ export class BonusComponent implements OnInit {
     this.bo.refreshBonus(this.id, this.currentYear).subscribe(orderEv => {
       if(orderEv.status === 200){
         this.setEvaluation(orderEv.body);
+        this.calculateSum();
       }
     });
   }
